@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --c1:#a287ff;
+  --c:#6655a0;
+  --c2:#7e69c6;
+  --c3:#5d4d93;
+  --c4:#45367c;
+}
 body {
+  background-color: #8aecff;
+}
+// .codex .tile,
+.codex{
   background-color: #6655a0;
+}
+.codex .tile-map{
+  outline: 1px solid #cdff0f;
+}
+
+.tablet .tile {
+  outline: 1px solid #9887cf;
+}
+.tablet {
+  box-shadow:0px 0px 0px 5px var(--c), 0px -10px 0px -5px var(--c3),0px -21px 0px -10px var(--c2),0px -32px 0px -15px var(--c1);
+}
+
+.water {
+  display: block;
+  position: fixed;
+  height:15rem;
+  bottom: 0;
+  left:0;
+  right:0;
+  background-color: #4170f4;
+  mix-blend-mode: multiply;
+  border-top: 1rem ridge #89a5f3;
 }

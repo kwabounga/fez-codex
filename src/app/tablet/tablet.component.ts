@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-tablet',
   templateUrl: './tablet.component.html',
   styleUrls: ['./tablet.component.less'],
-  host: {'class': 'grid-container tablet shadow'}
+  host: {'class': 'grid-container tablet'}
 })
 export class TabletComponent {
   @Input() tiles?:string[];
