@@ -21,17 +21,112 @@ body {
   outline: 1px solid #9887cf;
 }
 .tablet {
-  box-shadow:0px 0px 0px 5px var(--c), 0px -10px 0px -5px var(--c3),0px -21px 0px -10px var(--c2),0px -32px 0px -15px var(--c1);
-}
+  // box-shadow:0px 0px 0px 5px var(--c), 0px -10px 0px -5px var(--c3),0px -21px 0px -10px var(--c2),0px -32px 0px -15px var(--c1);
 
+-webkit-box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
+box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
+background: #45367C;
+
+}
+.tablet-alt{
+  filter: grayscale(26%) sepia(45%) hue-rotate(87deg);
+}
+.empty{
+  margin-bottom: 43rem;
+}
 .water {
   display: block;
   position: fixed;
-  height:15rem;
+  height:10rem;
   bottom: 0;
   left:0;
   right:0;
   background-color: #4170f4;
   mix-blend-mode: multiply;
   border-top: 1rem ridge #89a5f3;
+}
+.bg-fez{
+  background-color: #45367c;
+}
+.d-content{
+  display: contents;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0;
+  flex-direction: column;
+  max-height: ~'calc(40px * 13)';
+  max-width: fit-content;
+}
+.grid-container-screen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0;
+  flex-direction: column;
+  max-height: ~'calc(40px * 13)';
+  max-width: fit-content;
+}
+.screen{
+  max-width: ~'calc(40px * 6)';
+  min-height: 4rem;
+}
+.grid-container-antic {
+  position: fixed;
+  bottom: 7rem;
+  right: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0;
+  flex-direction: column;
+  max-height: ~'calc(40px * 5)';
+  max-width: fit-content;
+}
+.word{
+  display: inline-flex;
+}
+.grid-container-alphabet {
+  position: fixed;
+  bottom: 25rem;
+  right: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0;
+  max-width: calc(40px* 9);
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+}
+.grid-container-codex {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0;
+  max-width: calc(80px* 5);
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+}
+
+.antic-keyboard{
+  // -webkit-box-shadow: inset -3px -3px 5px 5px #27213D, 0px 0px 0px 10px #50447D;
+  // box-shadow: inset -3px -3px 5px 5px #27213D, 0px 0px 0px 10px #50447D;
+}
+.codex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.img-logo {
+  width: 10rem;
+  height: auto;
 }

@@ -3,7 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-translator',
   templateUrl: './translator.component.html',
-  styleUrls: ['./translator.component.less']
+  styleUrls: ['./translator.component.less'],
+  host: {class:"d-contents"}
 })
 export class TranslatorComponent {
   @Input() tiles?: string[];
@@ -34,4 +35,8 @@ export class TranslatorComponent {
     "23":"v",
     "24":"b"
   }
+  get message() {
+    return this.tiles?.map((letter)=>{return this.mapping[letter]})
+  }
+
 }

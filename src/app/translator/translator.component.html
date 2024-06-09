@@ -1,3 +1,11 @@
 <ng-container *ngIf="tiles">
-  <span *ngFor="let letter of tiles">{{mapping[letter]}}</span>
+
+  <app-screen
+  [message]="message"></app-screen>
+  <div class="tablet screen mt-5 ">
+    <p>
+      <span *ngFor="let tile of tiles">{{mapping[tile]}}</span>
+    </p>
+  </div>
+
 </ng-container>

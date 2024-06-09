@@ -1,9 +1,12 @@
 <ng-container *ngIf="tiles">
-  <div class="tile-map" *ngFor="let tile of tiles">
+  <div class="tile-map" *ngFor="let tile of tilesCanChange">
     <app-tile
     [asset]="tile"
     [letter]="mapping[tile]"
   ></app-tile>
-  <div class="mapping">{{mapping[tile]}}</div>
+  <app-letter
+    [letter]="mapping[tile]"
+    [ngClass]="'tablet-alt'"
+  ></app-letter>
   </div>
 </ng-container>

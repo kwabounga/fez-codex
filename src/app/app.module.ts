@@ -7,6 +7,10 @@ import { TabletComponent } from './tablet/tablet.component';
 import { TranslatorComponent } from './translator/translator.component';
 import { AnticKeyboardComponent } from './antic-keyboard/antic-keyboard.component';
 import { CodexComponent } from './codex/codex.component';
+import { LetterComponent } from './letter/letter.component';
+import { KeyboardComponent } from './keyboard/keyboard.component';
+import { ScreenComponent } from './screen/screen.component';
+import { WordComponent } from './word/word.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { CodexComponent } from './codex/codex.component';
     TabletComponent,
     TranslatorComponent,
     AnticKeyboardComponent,
-    CodexComponent
+    CodexComponent,
+    LetterComponent,
+    KeyboardComponent,
+    ScreenComponent,
+    WordComponent
   ],
   imports: [
     BrowserModule

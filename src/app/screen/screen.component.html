@@ -1,0 +1,6 @@
+<ng-container *ngIf="message">
+  <app-letter
+    *ngFor="let letter of message"
+    [letter]="letter"
+  ></app-letter>
+</ng-container>
