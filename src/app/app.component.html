@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-fez shadom-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Fez Codex</a>
+  </div>
+</nav>
+<hr class="separator">
+<div class="container">
+  <div class="row gx-5">
+    <div class="col-12 col-lg-6">
+      <app-tablet
+      [tiles]="tiles"
+      [mapping] = "mapping"></app-tablet>
+    </div>
+    <div class="col-12 col-lg-6">
+      <app-translator
+      [tiles]="tiles"
+      [mapping] = "mapping"
+      ></app-translator>
+    </div>
+  </div>
+</div>
+<hr class="separator">
+<div class="container">
+  <app-antic-keyboard
+  [mapping] = "mapping"
+  ></app-antic-keyboard>
+  <app-codex
+  [tiles]="symbols"
+  [mapping] = "mapping"
+  ></app-codex>
+</div>

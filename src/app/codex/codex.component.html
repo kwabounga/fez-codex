@@ -1,0 +1,9 @@
+<ng-container *ngIf="tiles">
+  <div class="tile-map" *ngFor="let tile of tiles">
+    <app-tile
+    [asset]="tile"
+    [letter]="mapping[tile]"
+  ></app-tile>
+  <div class="mapping">{{mapping[tile]}}</div>
+  </div>
+</ng-container>

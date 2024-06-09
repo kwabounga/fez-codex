@@ -1,0 +1,10 @@
+<div class="tile">
+  <img *ngIf="asset"
+    [src]="assetsMapping[asset]"
+    data-bs-toggle="tooltip"
+    alt="{{letter??'?'}}"
+    title="[{{letter??'?'}}]"
+    (mouseenter)="hoverTile()"
+    (mouseleave)="leaveTile()"
+  >
+ </div>

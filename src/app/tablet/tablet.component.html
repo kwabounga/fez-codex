@@ -1,0 +1,23 @@
+<!-- <app-tile [asset]="'02'" ></app-tile>
+  <app-tile [asset]="'03'" ></app-tile>
+  <app-tile [asset]="'04'" ></app-tile>
+  <app-tile [asset]="'05'" ></app-tile>
+  <app-tile [asset]="'06'" ></app-tile>
+  <app-tile [asset]="'07'" ></app-tile>
+  <app-tile [asset]="'02'" ></app-tile>
+  <app-tile
+    [asset]="'05'"
+    [letter]="undefined"
+  ></app-tile>
+  <app-tile
+    [asset]="'10'"
+    [letter]="'t'"
+  ></app-tile> -->
+
+  <ng-container *ngIf="tiles">
+    <app-tile
+      *ngFor="let tile of tiles"
+      [asset]="tile"
+      [letter]="mapping?mapping[tile]:undefined"
+    ></app-tile>
+  </ng-container>
