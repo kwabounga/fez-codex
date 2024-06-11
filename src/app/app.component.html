@@ -1,19 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-fez shadom-sm">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
-      <app-word [word]="'le codex'"></app-word>
-    </a>
+      <img class="img-logo" src="./assets/logo.png" alt="" srcset="">
 
+      <span style="color: white;">CoDEX</span>
+    </a>
+    <a class="navbar-brand" href="https://kwabounga.fr"><app-word [word]="'kwa'"></app-word></a>
   </div>
 </nav>
-<hr class="separator">
+<!-- <hr class="separator"> -->
 <div class="container">
   <div class="row gx-5">
     <div class="col-12 col-lg-auto">
       <app-tablet
       [tiles]="tiles"
-      [mapping] = "mapping"></app-tablet>
+      [mapping] = "mapping"
+      (onErase)="razMessage($event)"></app-tablet>
     </div>
     <div class="col-12 col-lg-auto">
       <app-translator
@@ -23,17 +25,36 @@
     </div>
   </div>
 </div>
-<hr class="separator">
+<!-- <hr class="separator"> -->
 <div class="container">
   <app-antic-keyboard
+  [title]="'gLyph kbd'"
   [mapping]="mapping"
+  [ngClass]="'antic-keyboard t-25-r-12'"
   >
 </app-antic-keyboard>
+<!-- <app-antic-keyboard
+  [title]="'NUm'"
+  [charas]="[ ]"
+  [mapping]="mapping"
+  [ngClass]="'antic-keyboard-num t-25-r-3'"
+  >
+</app-antic-keyboard> -->
   <app-keyboard></app-keyboard>
   <app-codex
   [tiles]="symbols"
   [mapping]="mapping"
+  [ngClass]="'antic-keyboard'"
   ></app-codex>
+
+  <div class="space-time-rift-element t-15-r-15 rifted z-2  shadered">
+    <div class="glitch-wrapper">
+      <div class="glitch" data-glitch="!!">!!</div>
+   </div>
+  </div>
+
+
 </div>
 <div class="empty"></div>
 <div class="water"></div>
+

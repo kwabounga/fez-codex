@@ -1,4 +1,6 @@
-<ng-container>
+<ng-container (click)="onclick($event)">
+  <div class="draggable">{{title}}</div>
+  <app-letter [letter]="'r'" [ngClass]="'reset-btn'"></app-letter>
   <app-tile *ngFor="let chara of charas"
     [asset]="chara"
     [letter]="mapping?mapping[chara]:undefined"

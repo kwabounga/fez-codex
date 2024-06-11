@@ -2,9 +2,10 @@
   <img *ngIf="asset"
     [src]="assetsMapping[asset]"
     data-bs-toggle="tooltip"
-    alt="{{letter??'?'}}"
-    title="[{{letter??'?'}}]"
-    (mouseenter)="hoverTile()"
-    (mouseleave)="leaveTile()"
+    alt="{{letter}}"
+    title="{{title}}"
+    (mouseenter)="hoverTile(asset)"
+    (mouseleave)="leaveTile(asset)"
+    class="{{unknown?'letter-unknown':'letter-linked'}}"
   >
  </div>

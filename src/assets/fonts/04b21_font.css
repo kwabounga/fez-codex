@@ -1,0 +1,12 @@
+@font-face {
+    font-family: '04b_21';
+    src: url('04b21.eot');
+    src: url('04b21.eot?#iefix') format('embedded-opentype'),
+        url('04b21.woff2') format('woff2'),
+        url('04b21.woff') format('woff'),
+        url('04b21.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

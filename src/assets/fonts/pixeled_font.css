@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Pixeled';
+    src: url('Pixeled.eot');
+    src: url('Pixeled.eot?#iefix') format('embedded-opentype'),
+        url('Pixeled.woff2') format('woff2'),
+        url('Pixeled.woff') format('woff'),
+        url('Pixeled.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
