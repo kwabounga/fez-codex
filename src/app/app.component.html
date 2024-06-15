@@ -8,29 +8,67 @@
     <a class="navbar-brand" href="https://kwabounga.fr"><app-word [word]="'kwa'"></app-word></a>
   </div>
 </nav>
-<!-- <hr class="separator"> -->
-<div class="container">
-  <div class="row gx-5">
-    <div class="col-12 col-lg-auto">
-      <app-tablet
-      [tiles]="tiles"
-      [mapping] = "mapping"
-      (onErase)="razMessage($event)"></app-tablet>
-    </div>
-    <div class="col-12 col-lg-auto">
-      <app-translator
-      [tiles]="tiles"
-      [mapping] = "mapping"
-      ></app-translator>
+  <!-- scene -->
+  <div class="container-fluid {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}}">
+    <div class="row g-0">
+      <div class="col col-12">
+        <div class="space-time-rift-element mini t-11-r50p rifted z-2  shadered"></div>
+        <div class="space-time-rift-element t-11-r50p rifted z-2  shadered">
+          <div class="glitch-wrapper">
+            <div class="glitch"[attr.data-glitch]="glitchText">{{glitchText}}</div>
+         </div>
+        </div>
+        <div class="decor_portal"></div>
+        <div class="decor_step with-grass with-moss"></div>
+        <div class="decor_low_wall with-grass with-moss "></div>
+        <div class="decor_ground with-grass with-moss "></div>
+        <div class="row g-0">
+          <div class="col-12 col-md-6 ">
+            <div class="decor_stone_wall m-l-auto w-90 with-house"></div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="decor_stone_wall m-r-auto w-90 with-house with-house-right flipped"></div>
+          </div>
+        </div>
+        <div class="decor_ground alt m-auto w-90 with-moss with-grass" ></div>
+        <div class="decor_ground alt m-auto w-90"></div>
+        <div class="decor_ground shadowed alt m-auto w-80"></div>
+        <div class="decor_ground shadowed brown m-auto w-70"></div>
+        <div class="decor_ground shadowed brown alt m-auto w-70"></div>
+      </div>
+      <div class="col col-12">
+        <!-- elements -->
+        <div class="container">
+          <div class="row gx-5 justify-content-center">
+            <div class="col-12 col-lg-6  w-auto">
+              <app-tablet
+              [tiles]="tiles"
+              [mapping] = "mapping"
+              (onErase)="razMessage($event)"
+              (onSelect)="assignGlyph($event)"
+              ></app-tablet>
+            </div>
+            <div class="col-12 col-lg-6  w-auto">
+              <app-translator
+              [tiles]="tiles"
+              [mapping] = "mapping"
+              ></app-translator>
+            </div>
+          </div>
+        </div>
+        <!-- !elements -->
+      </div>
     </div>
   </div>
-</div>
-<!-- <hr class="separator"> -->
-<div class="container">
+
+
+
+<div class="container {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}} logic-elements {{uiHidden?'d-none':''}}">
   <app-antic-keyboard
   [title]="'gLyph kbd'"
   [mapping]="mapping"
   [ngClass]="'antic-keyboard t-25-r-12'"
+  (onSelect)="onSelectGlyphFromAnticKeyBoard($event)"
   >
 </app-antic-keyboard>
 <!-- <app-antic-keyboard
@@ -40,21 +78,25 @@
   [ngClass]="'antic-keyboard-num t-25-r-3'"
   >
 </app-antic-keyboard> -->
-  <app-keyboard></app-keyboard>
+  <app-keyboard
+  [ngClass]="'keyboard'"
+  (onSelect)="onSelectLetterFromKeyBoard($event)">
+</app-keyboard>
   <app-codex
   [tiles]="symbols"
   [mapping]="mapping"
-  [ngClass]="'antic-keyboard'"
+  (onSelect)="assignLetter($event)"
+  [currentTile]="currentTile"
   ></app-codex>
-
-  <div class="space-time-rift-element t-15-r-15 rifted z-2  shadered">
-    <div class="glitch-wrapper">
-      <div class="glitch" data-glitch="!!">!!</div>
-   </div>
-  </div>
-
-
 </div>
+
 <div class="empty"></div>
 <div class="water"></div>
 
+
+<div class="form-check form-switch fez-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="!uiHidden"
+    (change)="toggleUi()"
+  >
+  <!-- <label class="form-check-label" for="flexSwitchCheckChecked">show/hide ui</label> -->
+</div>

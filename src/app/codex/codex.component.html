@@ -1,9 +1,14 @@
 <ng-container *ngIf="tiles">
   <div class="draggable">CoDEX</div>
-  <div class="tile-map" *ngFor="let tile of tilesCanChange">
+  <div class="tile-map"
+  *ngFor="let tile of tilesCanChange"
+  (click)="selectLetter(tile)"
+  >
     <app-tile
     [asset]="tile"
     [letter]="mapping[tile]"
+    ngClass="{{tile === currentTile?'selected':''}}"
+
   ></app-tile>
   <app-letter
     [letter]="mapping[tile]"

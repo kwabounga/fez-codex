@@ -15,10 +15,11 @@
   ></app-tile> -->
 
   <ng-container *ngIf="tiles">
-    <app-letter [letter]="'r'" [ngClass]="'reset-btn'" (click)="dispatchClick($event)"></app-letter>
+    <app-letter [letter]="'r'" [ngClass]="'reset-btn'" (click)="resetGlyph($event)"></app-letter>
     <app-tile
-      *ngFor="let tile of tiles"
+      *ngFor="let tile of tiles, let id = index;"
       [asset]="tile"
       [letter]="mapping?mapping[tile]:undefined"
+      (click)="selectGlyph(id)"
     ></app-tile>
   </ng-container>

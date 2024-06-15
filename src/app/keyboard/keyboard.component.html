@@ -1,9 +1,12 @@
 <ng-container>
   <div class="draggable">Kbd</div>
   <app-letter [letter]="' '" [ngClass]="'reset-btn space-letter'"></app-letter>
-  <app-letter [letter]="'?'" [ngClass]="'reset-btn unknown-letter'"></app-letter>
+  <app-letter [letter]="'?'" [ngClass]="'reset-btn unknown-letter'"
+  (click)="selectLetter('?')"
+  ></app-letter>
   <app-letter
   *ngFor="let letter of alphabet"
   [letter]="letter"
+  (click)="selectLetter(letter)"
   ></app-letter>
 </ng-container>

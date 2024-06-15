@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tileSize: 40px;
+@groundSize: @tileSize * 1.5;
+@fezSwitch: "%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 8 8'%3e%3crect width='6' height='6' fill='%23fff'/%3e%3c/svg%3e";
+
+:root{
+  --diff: @groundSize * 2;
+  --tileSize: @tileSize;
+  --groundSize: @groundSize;
+  --groundSize-n: calc(@groundSize * -1);
+  --bs-body-bg: #45367c;
+  --bs-body-bg-checked: #a287ff;
+}
+
+@media only screen and (max-width: 767px) {
+  @tileSize: 30px;
+  @groundSize: @tileSize * 1.5;
+  :root{
+  --diff: @groundSize * 2;
+  --tileSize: @tileSize;
+  --groundSize: @groundSize;
+  --groundSize-n: calc(@groundSize * -1);
+  }
+}
+
+
+
 :root{
   --c1:#a287ff;
   --c:#6655a0;
@@ -7,12 +34,14 @@
   --c4:#45367c;
   --c5:#2f2554;
   --c6:#6655a0;
+  --c-sky:#8aecff;
 }
 body {
-  background-color: #8aecff;
+  background-color: var(--c-sky);
   font-family: 'Pixeled';
   color: var(--c5);
   user-select: none;
+  overflow-x: hidden;
 }
 .tooltip .tooltip-arrow:before {
   border-top-color: var(--c1)!important;
@@ -41,14 +70,12 @@ body {
   border: 1px solid #352c53;
 }
 .tablet {
-
   // box-shadow:0px 0px 0px 5px var(--c), 0px -10px 0px -5px var(--c3),0px -21px 0px -10px var(--c2),0px -32px 0px -15px var(--c1);
-
--webkit-box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
-box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
-background-color: var(--c6);
-
+  -webkit-box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
+  box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
+  background-color: var(--c6);
 }
+
 .tablet-alt{
   filter: grayscale(26%) sepia(45%) hue-rotate(87deg);
 }
@@ -67,7 +94,7 @@ background-color: var(--c6);
   border-top: 1rem ridge #89a5f3;
 }
 .bg-fez{
-  background-color: #45367c;
+  background-color: transparent;
 }
 .d-contents,
 .d-content{
@@ -93,11 +120,11 @@ background-color: var(--c6);
 }
 .grid-container ,
 .grid-container-screen {
-  max-height: calc(2.8rem + calc(40px * 13));
-  max-width: calc(1.2rem + calc(40px * 6));
+  max-height: calc(2.8rem + calc(var(--tileSize) * 13));
+  max-width: calc(1.2rem + calc(var(--tileSize) * 6));
 }
 .screen{
-  max-width: calc(1.2rem + calc(40px * 6));
+  max-width: calc(1.2rem + calc(var(--tileSize) * 6));
   min-height: 4rem;
 }
 .grid-container-antic {
@@ -109,7 +136,7 @@ background-color: var(--c6);
   flex-wrap: wrap;
   gap: 0;
   row-gap: 0;
-  max-width: calc(40px* 9);
+  max-width: calc(var(--tileSize) * 9);
   max-height: -moz-fit-content;
   max-height: fit-content;
 }
@@ -125,9 +152,17 @@ background-color: var(--c6);
   flex-wrap: wrap;
   gap: 0;
   row-gap: 0;
-  max-width: calc(40px* 9);
+  max-width: calc(var(--tileSize)* 9);
   max-height: -moz-fit-content;
   max-height: fit-content;
+}
+.letter img ,
+.tile img {
+  max-width: calc(var(--tileSize)* 1);
+  max-height: calc(var(--tileSize)* 1);
+}
+.letter, .tile {
+  display: flex;
 }
 .grid-container-codex {
   position: fixed;
@@ -138,7 +173,7 @@ background-color: var(--c6);
   flex-wrap: wrap;
   gap: 0;
   row-gap: 0;
-  max-width: calc(1rem + calc(80px * 5));
+  max-width: calc(1rem + calc((var(--tileSize) *2) * 5));
   max-height: -moz-fit-content;
   max-height: fit-content;
 }
@@ -192,7 +227,7 @@ background-color: var(--c6);
 }
 
 .mt-5{
-  margin-top: 40px!important;
+  margin-top: var(--tileSize)!important;
 }
 .rel {
   position: relative;
@@ -205,23 +240,43 @@ background-color: var(--c6);
   }
 .reset-btn.space-letter{
 
-  right: 40px;
+  right: var(--tileSize);
 }
   .rifted{
   animation: space-time-rift .5s ease 0s infinite alternate both;
 }
+.rifted.mini{
+  animation: space-time-rift .4s ease 0.2s infinite alternate both;
+}
 .space-time-rift-element{
   z-index:100;
   //border: 3px, solid white;
+
   background-color: black;
 //  background-color: #100000;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='white' stroke-width='5' stroke-dasharray='15%2c 2%2c 25%2c 2%2c 18' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
+// changer la couleur du path à la volée
+  background-image: url("./assets/decors/bg_glitch_stars.png"),
+                    url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%238aecff' stroke-width='5' stroke-dasharray='15%2c 2%2c 25%2c 2%2c 18' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
   position: absolute;
 
   display: block;
-  height: 5rem;
-  width: 5rem;
+  height: calc(var(--tileSize) * 3);
+  width:  calc(var(--tileSize) * 3);
+  &.mini{
+    height: calc(var(--tileSize) * .5);
+    width: calc(var(--tileSize) * .5);
+  }
 }
+
+.t-11-r50p{
+  top: calc(var(--tileSize) * 4);
+  right: calc(50% - calc(var(--tileSize) * 1.5));
+  &.mini{
+    top: calc(var(--tileSize) * 7);
+    right: calc(50% - calc(var(--tileSize) * 1));
+  }
+}
+
 .t-5-r-10 {
   top: 5rem;
   right: 10rem;
@@ -300,10 +355,9 @@ background-color: var(--c6);
   text-align: center;
   /* background-color: #222; */
 }
-
 .glitch {
    position: relative;
-   //font-size: 80px;
+   //font-size: var(--tileSize);
    font-weight: 700;
    line-height: 1.2;
    color: #fff;
@@ -365,3 +419,168 @@ background-color: var(--c6);
     //image-rendering: pixelatedfilter: blur(2px) ;
     filter: url(#pixelate);
   }
+
+
+
+  .decor_stone_wall{
+    height: calc(var(--groundSize) * 6);
+    width: calc(var(--groundSize) * 4);
+    // margin-left: auto;
+    // margin-right: auto;
+    background: transparent url("./assets/decors/stone_wall.png") repeat local 0px 0px;
+    background-size: contain;
+  }
+  .decor_portal{
+    height: calc(var(--groundSize) * 4);
+    width: calc(var(--groundSize) * 4);
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent url("./assets/decors/portail.png") no-repeat local 0px 0px;
+    background-size: contain;
+  }
+  .decor_step{
+    height: calc(var(--groundSize) * 1);
+    width: calc(var(--groundSize) * 6);
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent url("./assets/decors/step.png") repeat local 0px 0px;
+    background-size: contain;
+  }
+  .decor_low_wall{
+    height: calc(var(--groundSize) * 2);
+    background: transparent url("./assets/decors/low_wall.png") repeat local 0px 0px;
+    background-size: contain;
+    }
+    .decor_ground{
+    height: var(--groundSize);
+    background: transparent url("./assets/decors/stone bar 1.png") repeat local 0px 0px;
+    background-size: contain;
+    }
+  .decor_ground.brown{
+    background: transparent url("./assets/decors/brown_ground.png") repeat local 0px 0px;
+    background-size: contain;
+  }
+  .decor_ground.alt{
+    background-position: calc(calc(0 - var(--groundSize)) * 1), 0px;
+  }
+  .decor_ground.shadowed{
+    filter: brightness(.6);
+  }
+  .with-house,
+  .with-moss,
+  .with-grass {
+    position: relative;
+  }
+  .with-house-left ,
+  .with-house {
+    &:before {
+      content:" ";
+      background: transparent url("./assets/decors/house.png") no-repeat local 0px 0px;
+      background-size: contain;
+      position: absolute;
+      bottom:0;
+      left:var(--groundSize-n);
+      width: calc(var(--groundSize) * 4);
+      height: calc(var(--groundSize) * 4);
+    }
+  }
+  .with-house-right{
+    &.flipped:before {
+      .flipped();
+    }
+    &:before {
+      left:unset;
+      right:var(--groundSize);
+    }
+  }
+
+  .with-grass:before {
+    content:" ";
+    background: transparent url("./assets/decors/grass.png") repeat local 0px 0px;
+    background-size: auto;
+    position: absolute;
+    top:var(--groundSize-n);
+    left:0;
+    width: 100%;
+    height: var(--groundSize);
+  }
+  .with-moss:after {
+    content:" ";
+    background: transparent url("./assets/decors/moss.png") repeat local 0px 0px;
+    background-size: auto;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: calc(var(--groundSize) / 2.6);
+  }
+
+.w-90{
+  width: calc(100% - var(--diff));
+}
+
+.w-80{
+  width: calc(100% - calc(var(--diff) * 2));
+}
+
+.w-70{
+  width: calc(100% - calc(var(--diff) * 3));
+}
+.w-60{
+  width: calc(100% - calc(var(--diff) * 4));
+}
+
+.m-r-auto{
+  margin-right: auto;
+  @media only screen and (max-width: 767px) {
+    margin-left: auto;
+  }
+}
+.m-l-auto{
+  margin-left: auto;
+  @media only screen and (max-width: 767px) {
+    margin-right: auto;
+  }
+}
+.tile-map .selected .tile {
+  filter:invert()
+}
+
+.kbd-select .keyboard,
+.antic-kbd-select .antic-keyboard {
+  outline: solid 5px hsl(0, 100%, 75%);
+}
+
+.form-switch.fez-switch{
+  .form-check-input{
+    border-radius: 0;
+    --bs-form-switch-bg: url("data:image/svg+xml,@{fezSwitch}");
+    &:checked {
+      background-position: right center;
+      --bs-form-switch-bg: url("data:image/svg+xml,@{fezSwitch}");
+      background-color: var(--bs-body-bg-checked);
+      border-color: var(--bs-body-bg-checked);
+  }
+  }
+}
+
+.fez-switch {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 100;
+}
+
+/// mixins
+
+
+.flipped(){
+  -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+

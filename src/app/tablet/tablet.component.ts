@@ -4,17 +4,20 @@ import { Component, Input, Output,EventEmitter } from '@angular/core';
   selector: 'app-tablet',
   templateUrl: './tablet.component.html',
   styleUrls: ['./tablet.component.less'],
-  host: {'class': 'grid-container tablet  mt-5 rel'}
+  host: {'class': 'grid-container tablet   rel'} //mt-5
 })
 export class TabletComponent {
   @Input() tiles?:string[];
   @Input() mapping?: any;
   @Output() onErase = new EventEmitter<any>();
+  @Output() onSelect = new EventEmitter<any>();
 
 
 
-  dispatchClick(event:any){
-    // console.log('dispatchClick')
+  resetGlyph(event:any){
     this.onErase.emit('erase');
+  }
+  selectGlyph(tileId:any){
+    this.onSelect.emit(tileId);
   }
 }

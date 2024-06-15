@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+const GLYPH_DEFAULT_VALUE:number = -1;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+  uiHidden:boolean = true;
+  currentGlyph:number = GLYPH_DEFAULT_VALUE;
+  glitchText:string = "codex";
+  currentTile:string = "00";
   title = 'fez_codex';
   tiles:string[] = [
     "01","07","02","01","00","03","02",
@@ -59,8 +64,40 @@ export class AppComponent {
     "35":"10",
   }
   symbols = Object.keys(this.mapping);
+
+
+  // ngOnInit(){
+  //   new Array(36).forEach((id)=>{
+  //     this.mapping[`${id}`.padStart(2,'0')] = '?'
+  //   })
+  // }
   razMessage(event:any){
     console.log('razMessage',event)
     this.tiles = new Array(78).fill('00');
+  }
+
+  // tablet & antic-keyboard part
+  assignGlyph(glyphId: any) {
+    console.log("glyphId ", glyphId)
+    this.currentGlyph = glyphId
+  }
+  onSelectGlyphFromAnticKeyBoard(glyphID: any) {
+    this.tiles[this.currentGlyph] = glyphID;
+    this.currentGlyph = GLYPH_DEFAULT_VALUE;
+  }
+  // codex & keyboard part
+  assignLetter(tileId: string) {
+    console.log("tileId", tileId)
+    this.currentTile = tileId
+  }
+  onSelectLetterFromKeyBoard(letter: any) {
+    console.log("letter", letter);
+    if(this.currentTile != "00"){
+      this.mapping[this.currentTile] = letter;
+    }
+    this.currentTile = "00";
+  }
+  toggleUi(){
+    this.uiHidden = !this.uiHidden;
   }
 }

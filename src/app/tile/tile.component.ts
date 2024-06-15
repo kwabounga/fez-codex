@@ -58,10 +58,10 @@ export class TileComponent {
     setTimeout(()=>{
       let tooltipTrigger = this.elem.nativeElement.querySelector('[data-bs-toggle="tooltip"]')
       let t:string = tooltipTrigger.dataset.bsOriginalTitle;
-      console.log(t)
-        if(this.title.trim() !== ""){
-          this.tooltipElement = new Tooltip(tooltipTrigger);
-        }
+
+      if(this.title.trim() !== ""){
+        this.tooltipElement = new Tooltip(tooltipTrigger);
+      }
     },200)
 
   }
