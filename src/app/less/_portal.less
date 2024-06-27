@@ -1,0 +1,31 @@
+.decor_portal {
+  height: calc(var(--groundSize) * 4);
+  width: calc(var(--groundSize) * 4);
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent url("../../assets/decors/portail.png") no-repeat local 0px 0px;
+  background-size: contain;
+  position: relative;
+  &:before {
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    top:.2rem;
+    right:.2rem;
+    bottom:.2rem;
+    left:.2rem;
+    background-color: green;
+
+    // background: transparent url("../../assets/decors/portail.png");
+
+    // background-image: repeating-conic-gradient(var(--c-sky-alt) 0% 25%, var(--c-sky) 0% 50%);
+    // background-position: 0 0, 5px 5px;
+    // background-size: 10px 10px;
+
+    background-image: linear-gradient(#ff4747 5px, transparent 5px), linear-gradient(to right, #ffa647 5px, transparent 5px);
+    background-size: 60px 60px;
+    background-color: var(--c-sky-green);
+    background-blend-mode: luminosity;
+    background-attachment: fixed;
+  }
+}

@@ -27,19 +27,36 @@
             "inlineStyleLanguage": "less",
             "assets": [
               "src/favicon.ico",
+              "src/favicon.svg",
+              "src/favicon.png",
+              "src/favicon-apple.png",
+              "src/favicon-manifest.png",
+              "src/manifest.json",
+              "src/.htaccess",
               "src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "node_modules/scrolling-tabs-bootstrap-5/dist/scrollable-tabs.css",
               "src/assets/fonts/pixeled_font.css",
               "src/assets/fonts/04b21_font.css",
               "src/styles.less"
             ],
             "scripts": [
               {
-              "input" :"node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-              "inject": false
-            }]
+                "input" :"node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+                "inject": false
+              },
+              {
+                "input" :"node_modules/move-js/move.min.js",
+                "inject": true
+              },
+              {
+                "input" :"src/lib/scrollable-tabs.js",
+                "inject": true
+              }
+            ]
           },
           "configurations": {
             "production": {

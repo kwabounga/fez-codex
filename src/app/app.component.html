@@ -2,7 +2,6 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img class="img-logo" src="./assets/logo.png" alt="" srcset="">
-
       <span style="color: white;">CoDEX</span>
     </a>
     <a class="navbar-brand" href="https://kwabounga.fr"><app-word [word]="'kwa'"></app-word></a>
@@ -11,23 +10,41 @@
   <!-- scene -->
   <div class="container-fluid {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}}">
     <div class="row g-0">
-      <div class="col col-12">
-        <div class="space-time-rift-element mini t-11-r50p rifted z-2  shadered"></div>
-        <div class="space-time-rift-element t-11-r50p rifted z-2  shadered">
-          <div class="glitch-wrapper">
-            <div class="glitch"[attr.data-glitch]="glitchText">{{glitchText}}</div>
-         </div>
+      <div class="col col-12 z-1">
+
+        <div class="decor_tree"></div>
+        <div class="decor_portal">
+          <app-space-time-rift
+          [offsetY]="scrollY"
+          [text]="glitchText"
+          ></app-space-time-rift>
         </div>
-        <div class="decor_portal"></div>
         <div class="decor_step with-grass with-moss"></div>
-        <div class="decor_low_wall with-grass with-moss "></div>
-        <div class="decor_ground with-grass with-moss "></div>
+        <div class="decor_low_wall with-grass with-moss ">
+          <div class="decor_gomez m-l-3"></div>
+          <div class="decor_warrior m-l-3"></div>
+          <div class="decor_mister m-l-3"></div>
+        </div>
+        <div class="decor_ground with-moss "></div>
         <div class="row g-0">
           <div class="col-12 col-md-6 ">
-            <div class="decor_stone_wall m-l-auto w-90 with-house"></div>
+            <div class="decor_stone_wall not_decor m-l-auto w-90 with-moss with-house">
+            <app-wall-tabs
+            [messages]="messages"></app-wall-tabs>
+          </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="decor_stone_wall m-r-auto w-90 with-house with-house-right flipped"></div>
+            <div class="decor_stone_wall m-r-auto w-90 with-moss with-house with-house-right flipped">
+              <div class="decor_intello"></div>
+              <br>
+              <br>
+              <button
+                (click)="saveToLocalStorage()"
+              > Sauvegarder</button>
+              <button
+                (click)="retrieveFromLocalStorage()"
+              > Charger Sauvegarde</button>
+            </div>
           </div>
         </div>
         <div class="decor_ground alt m-auto w-90 with-moss with-grass" ></div>
@@ -94,7 +111,7 @@
 <div class="water"></div>
 
 
-<div class="form-check form-switch fez-switch">
+<div class="form-check form-switch fez-switch abs">
   <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="!uiHidden"
     (change)="toggleUi()"
   >

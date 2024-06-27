@@ -11,6 +11,8 @@ import { LetterComponent } from './letter/letter.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
 import { ScreenComponent } from './screen/screen.component';
 import { WordComponent } from './word/word.component';
+import { WallTabsComponent } from './wall-tabs/wall-tabs.component';
+import { SpaceTimeRiftComponent } from './space-time-rift/space-time-rift.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { WordComponent } from './word/word.component';
     LetterComponent,
     KeyboardComponent,
     ScreenComponent,
-    WordComponent
+    WordComponent,
+    WallTabsComponent,
+    SpaceTimeRiftComponent
   ],
   imports: [
     BrowserModule

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LocalStorageService } from './local-storage.service';
+const LOCAL_STORAGE_KEY:string = 'fez_codex_state';
 const GLYPH_DEFAULT_VALUE:number = -1;
 @Component({
   selector: 'app-root',
@@ -7,27 +8,22 @@ const GLYPH_DEFAULT_VALUE:number = -1;
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+  constructor(private localStorageService: LocalStorageService) {
+    document.addEventListener('scroll', (event:any) => {
+      this.scrollY = (window.scrollY);
+    })
+  }
+  scrollY = 0;
   uiHidden:boolean = true;
   currentGlyph:number = GLYPH_DEFAULT_VALUE;
-  glitchText:string = "codex";
+  glitchText:string = "fez\ncodex";
   currentTile:string = "00";
+  currentMessage:number = 0;
   title = 'fez_codex';
-  tiles:string[] = [
-    "01","07","02","01","00","03","02",
-    "01","00","00","26","00","00","01",
-    "01","07","02","01","00","03","01",
-    "01","07","00","01","05","03","05",
-    "01","00","02","01","05","03","08",
-    "00","00","00","00","05","03","09",
-    "00","07","02","01","05","03","00",
-    "01","07","02","01","05","03","04",
-    "00","07","02","00","05","03","05",
-    "01","00","00","01","05","03","35",
-    "01","07","02","01","05","05","05","05",
-  ];
+
   mapping: any = {
     "00":" ",
-    "01":"a",
+    "01":"?",
     "02":"?",
     "03":"?",
     "04":"?",
@@ -51,30 +47,84 @@ export class AppComponent {
     "22":"?",
     "23":"?",
     "24":"?",
-    "25":"0",
-    "26":"1",
-    "27":"2",
-    "28":"3",
-    "29":"4",
-    "30":"5",
-    "31":"6",
-    "32":"7",
-    "33":"8",
-    "34":"9",
-    "35":"10",
+    "25":"?",
+    "26":"?",
+    "27":"?",
+    "28":"?",
+    "29":"?",
+    "30":"?",
+    "31":"?",
+    "32":"?",
+    "33":"?",
+    "34":"?",
+    "35":"?",
   }
   symbols = Object.keys(this.mapping);
+  messages:any = [
+    /* [
+      "01","07","02","01","00","03","02",
+      "01","00","00","26","00","00","01",
+      "01","07","02","01","00","03","01",
+      "01","07","00","01","05","03","05",
+      "01","00","02","01","05","03","08",
+      "00","00","00","00","05","03","09",
+      "00","07","02","01","05","03","00",
+      "01","07","02","01","05","03","04",
+      "00","07","02","00","05","03","05",
+      "01","00","00","01","05","03","35",
+      "01","07","02","01","05","05","05","05",
+    ],
+    [
+      "02","07","02","01","00","03","02",
+      "01","00","00","26","00","00","01",
+      "01","07","02","01","00","03","01",
+      "01","07","00","01","05","03","05",
+      "01","00","02","01","05","03","08",
+      "00","00","00","00","05","03","09",
+      "00","07","02","01","05","03","00",
+      "01","07","02","01","05","03","04",
+      "00","07","02","00","05","03","05",
+      "01","00","00","01","05","03","35",
+      "01","07","02","01","05","05","05","16",
+    ], */
+  ];
 
+  tiles:string[] = [
+    "01","07","02","01","00","03","02",
+    "01","00","00","26","00","00","01",
+    "01","07","02","01","00","03","01",
+    "01","07","00","01","05","03","05",
+    "01","00","02","01","05","03","08",
+    "00","00","00","00","05","03","09",
+    "00","07","02","01","05","03","00",
+    "01","07","02","01","05","03","04",
+    "00","07","02","00","05","03","05",
+    "01","00","00","01","05","03","35",
+    "01","07","02","01","05","05","05","05",
+  ];
 
-  // ngOnInit(){
-  //   new Array(36).forEach((id)=>{
-  //     this.mapping[`${id}`.padStart(2,'0')] = '?'
-  //   })
-  // }
+  ngOnInit(){
+    let save = this.retrieveFromLocalStorage();
+    if(save){
+      this.messages = save.messages
+      this.mapping = save.mapping
+      this.tiles  = this.copieMessage(0);
+      this.uiHidden = save.uiHidden??true;
+    }
+  }
   razMessage(event:any){
     console.log('razMessage',event)
     this.tiles = new Array(78).fill('00');
   }
+  copieMessage(_msgId:number){
+    console.log('copieMessage')
+    return Object.create(this.messages[_msgId]);
+  }
+  saveMessage(){
+    console.log('saveMessage')
+    this.messages.push(Object.create(this.tiles));
+  }
+
 
   // tablet & antic-keyboard part
   assignGlyph(glyphId: any) {
@@ -99,5 +149,20 @@ export class AppComponent {
   }
   toggleUi(){
     this.uiHidden = !this.uiHidden;
+  }
+
+  saveToLocalStorage() {
+    this.localStorageService.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({
+        mapping:this.mapping,
+        messages:this.messages,
+        uiHidden:this.uiHidden
+      }));
+  }
+
+  retrieveFromLocalStorage() {
+    const value = this.localStorageService.getItem(LOCAL_STORAGE_KEY);
+    return value? JSON.parse(value): null;
   }
 }

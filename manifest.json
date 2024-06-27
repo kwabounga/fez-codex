@@ -1,0 +1,11 @@
+{
+  "name": "Fez Codex",
+  "short_name": "fez codex",
+  "icons": [{
+      "src": "favicon-manifest.png",
+      "sizes": "512x512"
+  }],
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "display": "fullscreen"
+}

@@ -1,0 +1,71 @@
+@multiplier: 1.5;
+@gomez-height:95px;
+@gomez-width:65px;
+@intello-height:80px;
+@intello-width:75px;
+@warrior-height:90px;
+@warrior-width:65px;
+@mister-height:100px;
+@mister-width:75px;
+@tileSize: 40px;
+@groundSize: @tileSize * @multiplier;
+@fezSwitch: "%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 8 8'%3e%3crect width='6' height='6' fill='%23fff'/%3e%3c/svg%3e";
+@msg-size-h:  50px;
+@msg-size-w:  40px;
+
+
+:root{
+  --diff: @groundSize * 2;
+  --tileSize: @tileSize;
+  --groundSize: @groundSize;
+  --groundSize-n: calc(@groundSize * -1);
+  --bs-body-bg: #45367c;
+  --bs-body-bg-checked: #a287ff;
+  --gomez-width: @gomez-width;
+  --gomez-height: @gomez-height;
+  --intello-height: @intello-height;
+  --intello-width: @intello-width;
+  --warrior-height: @warrior-height;
+  --warrior-width: @warrior-width;
+  --mister-height: @mister-height;
+  --mister-width: @mister-width;
+  --gomez-top: calc(var(--gomez-height) * -1);
+  --msg-size-h: @msg-size-h;
+  --msg-size-w: @msg-size-w;
+}
+
+@media only screen and (max-width: 767px) {
+  @tileSize: 30px;
+  @groundSize: @tileSize * @multiplier;
+  :root{
+  --diff: @groundSize * 2;
+  --tileSize: @tileSize;
+  --groundSize: @groundSize;
+  --groundSize-n: calc(@groundSize * -1);
+  --gomez-width: calc(@gomez-width * .75);
+  --gomez-height: calc(@gomez-height * .75);
+  --intello-width: calc(@intello-width * .75);
+  --intello-height: calc(@intello-height * .75);
+  --warrior-width: calc(@warrior-width * .75);
+  --warrior-height: calc(@warrior-height * .75);
+  --mister-width: calc(@mister-width * .75);
+  --mister-height: calc(@mister-height * .75);
+  --gomez-top: calc(var(--gomez-height) * -1);
+  --msg-size-h: @msg-size-h * .75;
+  --msg-size-w: @msg-size-w * .75;
+  }
+}
+
+:root{
+  --c1:#a287ff;
+  --c:#6655a0;
+  --c2:#7e69c6;
+  --c3:#5d4d93;
+  --c4:#45367c;
+  --c5:#2f2554;
+  --c6:#6655a0;
+  --c-sky-green:#b3ffab;
+  --c-sky-intense:#12fff7;
+  --c-sky:#8aecff;
+  --c-sky-alt:#474bff;
+}

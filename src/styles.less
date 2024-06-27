@@ -1,41 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-@tileSize: 40px;
-@groundSize: @tileSize * 1.5;
-@fezSwitch: "%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 8 8'%3e%3crect width='6' height='6' fill='%23fff'/%3e%3c/svg%3e";
 
-:root{
-  --diff: @groundSize * 2;
-  --tileSize: @tileSize;
-  --groundSize: @groundSize;
-  --groundSize-n: calc(@groundSize * -1);
-  --bs-body-bg: #45367c;
-  --bs-body-bg-checked: #a287ff;
-}
+@import url('./app//less/_variables.less');
 
-@media only screen and (max-width: 767px) {
-  @tileSize: 30px;
-  @groundSize: @tileSize * 1.5;
-  :root{
-  --diff: @groundSize * 2;
-  --tileSize: @tileSize;
-  --groundSize: @groundSize;
-  --groundSize-n: calc(@groundSize * -1);
-  }
-}
+@import url('./app//less/_tooltip.less');
+@import url('./app//less/_animations.less');
+@import url('./app//less/_glitch.less');
+@import url('./app//less/_portal.less');
 
 
 
-:root{
-  --c1:#a287ff;
-  --c:#6655a0;
-  --c2:#7e69c6;
-  --c3:#5d4d93;
-  --c4:#45367c;
-  --c5:#2f2554;
-  --c6:#6655a0;
-  --c-sky:#8aecff;
-}
 body {
   background-color: var(--c-sky);
   font-family: 'Pixeled';
@@ -43,18 +17,12 @@ body {
   user-select: none;
   overflow-x: hidden;
 }
-.tooltip .tooltip-arrow:before {
-  border-top-color: var(--c1)!important;
+.bg-sky{
+  background: var(--c-sky-green);
+  background: -webkit-linear-gradient(0deg, var(--c-sky-green) 0%, var(--c-sky-intense) 100%);
+  background: linear-gradient(0deg, var(--c-sky-green) 0%, var(--c-sky-intense) 100%);
 }
-.tooltip-inner{
-  border-radius: 0;
-  background-color: var(--c1);
-  -webkit-box-shadow: 5px -5px 0px 0px #2F2554;
-  box-shadow: 5px -5px 0px 0px #2F2554;
-}
-.tooltip-inner{
-  font-family: 'Pixeled';
-}
+
 // .codex .tile,
 .codex{
   background-color: #6655a0;
@@ -69,6 +37,7 @@ body {
 .grid-container-screen.tablet .letter {
   border: 1px solid #352c53;
 }
+
 .tablet {
   // box-shadow:0px 0px 0px 5px var(--c), 0px -10px 0px -5px var(--c3),0px -21px 0px -10px var(--c2),0px -32px 0px -15px var(--c1);
   -webkit-box-shadow: 0px 0px 0px 5px #2F2554, 0px 0px 0px 10px #45367C, 0px 0px 0px 15px #4E3D8C, 0px -11px 0px 10px #5A46A1;
@@ -126,6 +95,7 @@ body {
 .screen{
   max-width: calc(1.2rem + calc(var(--tileSize) * 6));
   min-height: 4rem;
+  user-select: text;
 }
 .grid-container-antic {
   position: fixed;
@@ -242,40 +212,8 @@ body {
 
   right: var(--tileSize);
 }
-  .rifted{
-  animation: space-time-rift .5s ease 0s infinite alternate both;
-}
-.rifted.mini{
-  animation: space-time-rift .4s ease 0.2s infinite alternate both;
-}
-.space-time-rift-element{
-  z-index:100;
-  //border: 3px, solid white;
 
-  background-color: black;
-//  background-color: #100000;
-// changer la couleur du path à la volée
-  background-image: url("./assets/decors/bg_glitch_stars.png"),
-                    url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%238aecff' stroke-width='5' stroke-dasharray='15%2c 2%2c 25%2c 2%2c 18' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
-  position: absolute;
 
-  display: block;
-  height: calc(var(--tileSize) * 3);
-  width:  calc(var(--tileSize) * 3);
-  &.mini{
-    height: calc(var(--tileSize) * .5);
-    width: calc(var(--tileSize) * .5);
-  }
-}
-
-.t-11-r50p{
-  top: calc(var(--tileSize) * 4);
-  right: calc(50% - calc(var(--tileSize) * 1.5));
-  &.mini{
-    top: calc(var(--tileSize) * 7);
-    right: calc(50% - calc(var(--tileSize) * 1));
-  }
-}
 
 .t-5-r-10 {
   top: 5rem;
@@ -297,121 +235,9 @@ body {
   top: 25rem;
   right: 3rem;
 }
-@keyframes space-time-rift {
-	0% {
-		transform: translate(0);
-	}
-
-	10% {
-		transform: translate(-2px, -2px);
-	}
-
-	20% {
-		transform: translate(2px, -2px);
-	}
-
-	30% {
-		transform: translate(-2px, 2px);
-	}
-
-	40% {
-		transform: translate(2px, 2px);
-	}
-
-	50% {
-		transform: translate(-2px, -2px);
-	}
-
-	60% {
-		transform: translate(2px, -2px);
-	}
-
-	70% {
-		transform: translate(-2px, 2px);
-	}
-
-	80% {
-		transform: translate(-2px, -2px);
-	}
-
-	90% {
-		transform: translate(2px, -2px);
-	}
-
-	100% {
-		transform: translate(0);
-	}
-}
 
 
 
-
-.glitch-wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  /* background-color: #222; */
-}
-.glitch {
-   position: relative;
-   //font-size: var(--tileSize);
-   font-weight: 700;
-   line-height: 1.2;
-   color: #fff;
-   letter-spacing: 5px;
-   z-index: 1;
-}
-
-.glitch:before,
-.glitch:after {
-   display: block;
-   content: attr(data-glitch);
-   position: absolute;
-   top: 0;
-   left: 0;
-   opacity: 0.8;
-}
-
-.glitch:before {
-   animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-   color: #0ff;
-   z-index: -1;
-}
-
-.glitch:after {
-   animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
-   color: #ff00ff;
-   z-index: -2;
-}
-
-@keyframes glitch-color {
-   0% {
-      transform: translate(0);
-   }
-
-   20% {
-      transform: translate(-3px, 3px);
-   }
-
-   40% {
-      transform: translate(-3px, -3px);
-   }
-
-   60% {
-      transform: translate(3px, 3px);
-   }
-
-   80% {
-      transform: translate(3px, -3px);
-   }
-
-   to {
-      transform: translate(0);
-   }
-}
 
 
 
@@ -420,7 +246,12 @@ body {
     filter: url(#pixelate);
   }
 
-
+  .msg {
+    height: var(--msg-size-h);
+    width: var(--msg-size-w);
+    background: transparent url("./assets/decors/msg.png") no-repeat local 0px 0px;
+    background-size: contain;
+  }
 
   .decor_stone_wall{
     height: calc(var(--groundSize) * 6);
@@ -430,14 +261,15 @@ body {
     background: transparent url("./assets/decors/stone_wall.png") repeat local 0px 0px;
     background-size: contain;
   }
-  .decor_portal{
-    height: calc(var(--groundSize) * 4);
+  .decor_tree{
+    height: calc(var(--groundSize) * 5.49);
     width: calc(var(--groundSize) * 4);
     margin-left: auto;
     margin-right: auto;
-    background: transparent url("./assets/decors/portail.png") no-repeat local 0px 0px;
+    background: transparent url("./assets/decors/tree.png") no-repeat local 0px 0px;
     background-size: contain;
   }
+
   .decor_step{
     height: calc(var(--groundSize) * 1);
     width: calc(var(--groundSize) * 6);
@@ -466,6 +298,7 @@ body {
   .decor_ground.shadowed{
     filter: brightness(.6);
   }
+  .with-gomez,
   .with-house,
   .with-moss,
   .with-grass {
@@ -494,6 +327,38 @@ body {
     }
   }
 
+  *[class^="decor_"]:not(.not_decor){
+    // outline: #4170f4 2px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+  }
+  .decor_intello {
+    .createElement('intello.png',var(--intello-width),var(--intello-height))
+  }
+  .decor_gomez {
+    .createElement('gomez.png',var(--gomez-width),var(--gomez-height))
+  }
+  .decor_warrior {
+    .createElement('warrior.png',var(--warrior-width),var(--warrior-height))
+  }
+  .decor_mister {
+    .createElement('mister.png',var(--mister-width),var(--mister-height))
+  }
+  .createElement (@asset:'gomez.png', @width:0, @height:0) {
+    background: transparent url("./assets/decors/@{asset}") no-repeat local 0px 0px;
+    background-size: contain;
+    width: @width;
+    height: @height;
+    min-width: @width;
+    min-height: @height;
+    max-width: @width;
+    max-height: @height;
+    z-index: 1;
+  }
+
+
   .with-grass:before {
     content:" ";
     background: transparent url("./assets/decors/grass.png") repeat local 0px 0px;
@@ -503,6 +368,7 @@ body {
     left:0;
     width: 100%;
     height: var(--groundSize);
+    pointer-events: none;
   }
   .with-moss:after {
     content:" ";
@@ -513,6 +379,7 @@ body {
     left:0;
     width: 100%;
     height: calc(var(--groundSize) / 2.6);
+    pointer-events: none;
   }
 
 .w-90{
@@ -529,7 +396,9 @@ body {
 .w-60{
   width: calc(100% - calc(var(--diff) * 4));
 }
-
+.w-4t{
+  width: calc(var(--groundSize) * 4);
+}
 .m-r-auto{
   margin-right: auto;
   @media only screen and (max-width: 767px) {
@@ -542,6 +411,11 @@ body {
     margin-right: auto;
   }
 }
+
+.m-l-3 {
+  margin-left: 3rem;
+}
+
 .tile-map .selected .tile {
   filter:invert()
 }
@@ -564,7 +438,7 @@ body {
   }
 }
 
-.fez-switch {
+.fez-switch.abs {
   position: fixed;
   right: 2rem;
   bottom: 2rem;
@@ -581,6 +455,12 @@ body {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+
+
+.tab-pane {
+  text-wrap: wrap;
+  overflow-wrap: break-word;
 }
 
 

@@ -1,0 +1,129 @@
+// space-time-rift
+
+*:has( > app-space-time-rift) {
+  position: relative;
+}
+
+
+.glitch-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* background-color: #222; */
+}
+.glitch {
+   position: relative;
+   //font-size: var(--tileSize);
+   font-weight: 700;
+   line-height: 1.2;
+   color: #fff;
+   letter-spacing: 5px;
+   z-index: 1;
+}
+
+.glitch:before,
+.glitch:after {
+   display: block;
+   content: attr(data-glitch);
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0.8;
+}
+
+.glitch:before {
+   animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+   color: #0ff;
+   z-index: -1;
+}
+
+.glitch:after {
+   animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+   color: #ff00ff;
+   z-index: -2;
+}
+
+
+.rifted{
+  animation: space-time-rift .5s ease 0s infinite alternate both;
+}
+.rifted.mini{
+  animation: space-time-rift .4s ease 0s infinite alternate both;
+  &.mini2{
+    animation: space-time-rift .3s ease 0s infinite alternate both;
+  }
+  &.mini3{
+    animation: space-time-rift .6s ease 0s infinite alternate both;
+  }
+}
+.space-time-rift-element{
+  z-index:100;
+  //border: 3px, solid white;
+
+  background-color: black;
+//  background-color: #100000;
+// changer la couleur du path à la volée
+  background-image: url("../../assets/decors/bg_glitch_stars.png");
+  position: absolute;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  display: block;
+  height: calc(var(--tileSize) * 3);
+  width:  calc(var(--tileSize) * 3);
+  &.mini{
+    height: calc(var(--tileSize) * .5);
+    width: calc(var(--tileSize) * .5);
+    &.mini2{
+      height: calc(var(--tileSize) * .35);
+      width: calc(var(--tileSize) * .35);
+    }
+    &.mini3{
+      height: calc(var(--tileSize) * .25);
+      width: calc(var(--tileSize) * .25);
+    }
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    background-image:url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%238aecff' stroke-width='5' stroke-dasharray='15%2c 2%2c 25%2c 2%2c 18' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
+
+    top:0;
+    right: 0;
+    bottom: 0;
+    left:0
+
+  }
+}
+
+
+
+.space-time-rift-pos {
+  top: 3rem;
+  right: calc(50% - calc(var(--tileSize) * 1.5));
+  &.mini{
+    top: calc(calc(var(--tileSize) * 3) + 3.5rem);
+    right: calc(50% - calc(var(--tileSize) * 1));
+    &.mini2{
+      top: calc(calc(var(--tileSize) * 3) + 2.5rem);
+      right: calc(40% - calc(var(--tileSize) * 1));
+    }
+    &.mini3{
+      top: calc(calc(var(--tileSize) * 3) + 3.75rem);
+      right: calc(35% - calc(var(--tileSize) * 1));
+    }
+  }
+}
+
+.scale2 {
+  /* transform: scaleX(2); */
+  height: calc(var(--tileSize) * 6);
+  width: calc(var(--tileSize) * 6);
+  right: calc(50% - calc(var(--tileSize) * 3));
+}
+.special{
+  -webkit-box-shadow: 0px 0px 0px 6px #fff;
+  box-shadow: 0px 0px 0px 6px #fff;
+}

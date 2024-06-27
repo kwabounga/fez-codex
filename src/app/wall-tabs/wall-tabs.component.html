@@ -1,0 +1,28 @@
+<div class="w-100">
+  <div class="scroller scroller-left float-start mt-2"><i class="bi bi-caret-left-fill"></i></div>
+  <div class="scroller scroller-right float-end mt-2"><i class="bi bi-caret-right-fill"></i></div>
+  <div class="wrapper-nav">
+      <nav class="nav nav-tabs list mt-2" id="myTab" role="tablist">
+          <a
+          *ngFor="let message of messages, let id = index"
+          class="nav-item nav-link pointer"
+          data-bs-toggle="tab"
+          [attr.data-bs-target]="'#tab'+id"
+          role="tab"
+          aria-controls="public"
+          aria-selected="true">
+        <div class="msg"></div>
+        </a>
+      </nav>
+  </div>
+  <div class="tab-content p-3" id="myTabContent">
+        <div
+        *ngFor="let message of messages, let id = index"
+        role="tabpanel"
+        class="tab-pane fade show mt-2"
+        id="tab{{id}}"
+        aria-labelledby="public-tab" >
+        {{message.join('')}}
+      </div>
+  </div>
+</div>
