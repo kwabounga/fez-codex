@@ -163,6 +163,9 @@ export class AppComponent {
 
   retrieveFromLocalStorage() {
     const value = this.localStorageService.getItem(LOCAL_STORAGE_KEY);
-    return value? JSON.parse(value): null;
+    return value ? JSON.parse(value) : null;
+  }
+  setDevice(device:any){
+    console.log("device", device);
   }
 }

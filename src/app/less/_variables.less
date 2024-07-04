@@ -5,6 +5,11 @@
 @intello-width:75px;
 @warrior-height:90px;
 @warrior-width:65px;
+@seagull-height:65px;
+@seagull-width:55px;
+
+@sign-height:75px;
+@sign-width:70px;
 @mister-height:100px;
 @mister-width:75px;
 @tileSize: 40px;
@@ -14,7 +19,12 @@
 @msg-size-w:  40px;
 
 
+@cubeSize: @tileSize * @multiplier * 4;
+@perspectiveSize: @cubeSize * 5;
+@cubeFontSize: @cubeSize/4;
+
 :root{
+
   --diff: @groundSize * 2;
   --tileSize: @tileSize;
   --groundSize: @groundSize;
@@ -27,16 +37,30 @@
   --intello-width: @intello-width;
   --warrior-height: @warrior-height;
   --warrior-width: @warrior-width;
+  --seagull-height: @seagull-height;
+  --seagull-width: @seagull-width;
+  --sign-height: @sign-height;
+  --sign-width: @sign-width;
   --mister-height: @mister-height;
   --mister-width: @mister-width;
   --gomez-top: calc(var(--gomez-height) * -1);
   --msg-size-h: @msg-size-h;
   --msg-size-w: @msg-size-w;
+
+  --cubeSize: @cubeSize;
+  --perspectiveSize: @perspectiveSize;
+  --cubeFontSize: @cubeFontSize;
+
+  --ratio: @multiplier;
 }
 
 @media only screen and (max-width: 767px) {
   @tileSize: 30px;
   @groundSize: @tileSize * @multiplier;
+  @cubeSize: @tileSize * @multiplier * 4;
+  @perspectiveSize: @cubeSize * 5;
+  @cubeFontSize: @cubeSize/4;
+
   :root{
   --diff: @groundSize * 2;
   --tileSize: @tileSize;
@@ -48,11 +72,21 @@
   --intello-height: calc(@intello-height * .75);
   --warrior-width: calc(@warrior-width * .75);
   --warrior-height: calc(@warrior-height * .75);
+  --seagull-width: calc(@seagull-width * .75);
+  --seagull-height: calc(@seagull-height * .75);
+  --sign-width: calc(@sign-width * .75);
+  --sign-height: calc(@sign-height * .75);
   --mister-width: calc(@mister-width * .75);
   --mister-height: calc(@mister-height * .75);
   --gomez-top: calc(var(--gomez-height) * -1);
   --msg-size-h: @msg-size-h * .75;
   --msg-size-w: @msg-size-w * .75;
+
+  --cubeSize: @cubeSize;
+  --perspectiveSize: @perspectiveSize;
+  --cubeFontSize: @cubeFontSize;
+
+  --ratio: @multiplier * .75;
   }
 }
 

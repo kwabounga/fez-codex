@@ -11,7 +11,7 @@
   <div class="container-fluid {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}}">
     <div class="row g-0">
       <div class="col col-12 z-1">
-
+        <div class="decor_seagull m-auto"></div>
         <div class="decor_tree"></div>
         <div class="decor_portal">
           <app-space-time-rift
@@ -19,13 +19,33 @@
           [text]="glitchText"
           ></app-space-time-rift>
         </div>
-        <div class="decor_step with-grass with-moss"></div>
+        <div class="decor_step with-grass with-moss">
+          <div class="decor_sign m-l-3"></div>
+
+        </div>
         <div class="decor_low_wall with-grass with-moss ">
           <div class="decor_gomez m-l-3"></div>
           <div class="decor_warrior m-l-3"></div>
+          <div class="decor_seagull flipped"></div>
           <div class="decor_mister m-l-3"></div>
         </div>
         <div class="decor_ground with-moss "></div>
+        <div class="decor_low_wall shadowed"></div>
+        <div class="row g-0 ">
+          <div class="col-12 ">
+            <div class="decor_stone_wall decor_stone_wall-w100 m-auto w-90 not_decor with-moss flex-center">
+              <app-message-note class="m-l-2"
+              [msgClass]="'mw-5'"
+              >cliquer ici pour choisir sa console
+              </app-message-note>
+              <app-console-swapper
+                [choices]="['ps4','xbox','switch']"
+                (swapperChanged)="setDevice($event)"
+              ></app-console-swapper>
+          </div>
+          </div>
+
+        </div>
         <div class="row g-0">
           <div class="col-12 col-md-6 ">
             <div class="decor_stone_wall not_decor m-l-auto w-90 with-moss with-house">
@@ -34,8 +54,8 @@
           </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="decor_stone_wall m-r-auto w-90 with-moss with-house with-house-right flipped">
-              <div class="decor_intello"></div>
+            <div class="decor_stone_wall m-r-auto w-90 with-moss with-house with-house-right before-flipped not_decor">
+
               <br>
               <br>
               <button
@@ -44,9 +64,15 @@
               <button
                 (click)="retrieveFromLocalStorage()"
               > Charger Sauvegarde</button>
+              <app-message-note class="m-l-2"
+               [msgClass]="'mw-10'"
+              >ici on pourra charger les messages enregistrés
+              </app-message-note>
+              <div class="decor_intello"></div>
             </div>
           </div>
         </div>
+
         <div class="decor_ground alt m-auto w-90 with-moss with-grass" ></div>
         <div class="decor_ground alt m-auto w-90"></div>
         <div class="decor_ground shadowed alt m-auto w-80"></div>
@@ -115,5 +141,4 @@
   <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="!uiHidden"
     (change)="toggleUi()"
   >
-  <!-- <label class="form-check-label" for="flexSwitchCheckChecked">show/hide ui</label> -->
 </div>

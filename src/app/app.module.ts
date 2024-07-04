@@ -13,6 +13,8 @@ import { ScreenComponent } from './screen/screen.component';
 import { WordComponent } from './word/word.component';
 import { WallTabsComponent } from './wall-tabs/wall-tabs.component';
 import { SpaceTimeRiftComponent } from './space-time-rift/space-time-rift.component';
+import { ConsoleSwapperComponent } from './console-swapper/console-swapper.component';
+import { MessageNoteComponent } from './message-note/message-note.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SpaceTimeRiftComponent } from './space-time-rift/space-time-rift.compon
     ScreenComponent,
     WordComponent,
     WallTabsComponent,
-    SpaceTimeRiftComponent
+    SpaceTimeRiftComponent,
+    ConsoleSwapperComponent,
+    MessageNoteComponent
   ],
   imports: [
     BrowserModule

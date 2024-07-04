@@ -27,6 +27,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## assets
-hypercube animation:  
 
+cube animation:  
+https://codepen.io/mrosati84/pen/kWwXLg
+hypercube animation:  
 https://static.wikia.nocookie.net/fez-game/images/5/55/Tesseract.gif/revision/latest?cb=20150929195814
+
+https://codepen.io/Fuunnx/pen/JWMbyL
+https://codepen.io/Interseptive/pen/aaoKZR
+
+woooo ! https://github.com/ecuber/tesseract/tree/master?tab=readme-ov-file      https://tesseract22.netlify.app/   !!
+![tesseract](https://github.com/ecuber/tesseract/blob/master/demo/tesseractdemo.gif)

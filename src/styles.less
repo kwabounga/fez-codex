@@ -7,6 +7,7 @@
 @import url('./app//less/_animations.less');
 @import url('./app//less/_glitch.less');
 @import url('./app//less/_portal.less');
+@import url('./app//less/_console_swapper.less');
 
 
 
@@ -252,7 +253,10 @@ body {
     background: transparent url("./assets/decors/msg.png") no-repeat local 0px 0px;
     background-size: contain;
   }
+ .decor_stone_wall-w100{
+  width: auto;
 
+ }
   .decor_stone_wall{
     height: calc(var(--groundSize) * 6);
     width: calc(var(--groundSize) * 4);
@@ -295,7 +299,7 @@ body {
   .decor_ground.alt{
     background-position: calc(calc(0 - var(--groundSize)) * 1), 0px;
   }
-  .decor_ground.shadowed{
+  .shadowed{
     filter: brightness(.6);
   }
   .with-gomez,
@@ -318,7 +322,7 @@ body {
     }
   }
   .with-house-right{
-    &.flipped:before {
+    &.before-flipped:before {
       .flipped();
     }
     &:before {
@@ -327,12 +331,23 @@ body {
     }
   }
 
+  .flipped {
+    .flipped();
+  }
+
   *[class^="decor_"]:not(.not_decor){
     // outline: #4170f4 2px solid;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-end;
+  }
+
+  .decor_sign {
+    .createElement('sign.png', var(--sign-width),var(--sign-height))
+  }
+  .decor_seagull {
+    .createElement('seagull.png', var(--seagull-width),var(--seagull-height))
   }
   .decor_intello {
     .createElement('intello.png',var(--intello-width),var(--intello-height))
@@ -412,9 +427,16 @@ body {
   }
 }
 
-.m-l-3 {
-  margin-left: 3rem;
-}
+
+@sizes: 1,2,3,4,5,10,15,20;
+each(@sizes, {
+  .m-l-@{value} {
+    margin-left: (@value * 1rem);
+  }
+  .m-r-@{value} {
+    margin-right: (@value * 1rem);
+  }
+});
 
 .tile-map .selected .tile {
   filter:invert()
@@ -464,3 +486,10 @@ body {
 }
 
 
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:2rem;
+}

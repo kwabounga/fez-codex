@@ -72,3 +72,44 @@
   }
 }
 
+.position-device- {
+  &ps4,
+  &xbox,
+  &switch {
+    transform-style: preserve-3d;
+  }
+  &ps4 {
+    animation: anim-device-ps4 1s forwards;
+  }
+  &xbox {
+    animation: anim-device-xbox 1s forwards;
+  }
+  &switch {
+    animation: anim-device-switch 1s forwards;
+  }
+}
+.from-ps4-to-switch,
+.from-ps4-to-xbox{
+  -webkit-transform: rotateY(0deg);
+}
+.from-xbox-to-ps4,
+.from-xbox-to-switch{
+  -webkit-transform: rotateY(90deg);
+}
+.from-switch-to-xbox,
+.from-switch-to-ps4{
+  -webkit-transform: rotateY(180deg);
+}
+@keyframes anim-device-ps4 {
+  to { -webkit-transform: rotateY(0deg);  }
+}
+
+
+@keyframes anim-device-xbox {
+  to { -webkit-transform: rotateY(90deg);  }
+}
+
+
+@keyframes anim-device-switch {
+  to { -webkit-transform: rotateY(180deg);  }
+}

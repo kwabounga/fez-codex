@@ -22,7 +22,11 @@
         class="tab-pane fade show mt-2"
         id="tab{{id}}"
         aria-labelledby="public-tab" >
-        {{message.join('')}}
+        <app-message-note class="m-l-2"
+              [msgClass]="'mw-20'"
+              >{{message.join('')}}
+              </app-message-note>
+
       </div>
   </div>
 </div>
