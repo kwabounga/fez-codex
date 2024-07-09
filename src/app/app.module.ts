@@ -15,6 +15,7 @@ import { WallTabsComponent } from './wall-tabs/wall-tabs.component';
 import { SpaceTimeRiftComponent } from './space-time-rift/space-time-rift.component';
 import { ConsoleSwapperComponent } from './console-swapper/console-swapper.component';
 import { MessageNoteComponent } from './message-note/message-note.component';
+import { HypercubeComponent } from './hypercube/hypercube.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MessageNoteComponent } from './message-note/message-note.component';
     WallTabsComponent,
     SpaceTimeRiftComponent,
     ConsoleSwapperComponent,
-    MessageNoteComponent
+    MessageNoteComponent,
+    HypercubeComponent
   ],
   imports: [
     BrowserModule

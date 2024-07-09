@@ -38,3 +38,6 @@ https://codepen.io/Interseptive/pen/aaoKZR
 
 woooo ! https://github.com/ecuber/tesseract/tree/master?tab=readme-ov-file      https://tesseract22.netlify.app/   !!
 ![tesseract](https://github.com/ecuber/tesseract/blob/master/demo/tesseractdemo.gif)
+
+
+[css only](https://codepen.io/stix/pen/dMaENK)

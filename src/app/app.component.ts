@@ -8,10 +8,18 @@ const GLYPH_DEFAULT_VALUE:number = -1;
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+  currentMouseX = 0;
+  currentMouseY = 0;
   constructor(private localStorageService: LocalStorageService) {
     document.addEventListener('scroll', (event:any) => {
       this.scrollY = (window.scrollY);
     })
+    this.animationTics();
+    let self = this;
+    window.addEventListener('mousemove', function (e) {
+      self.currentMouseX = e.pageX;
+      self.currentMouseY = e.pageY;
+  }, /*useCapture=*/true);
   }
   scrollY = 0;
   uiHidden:boolean = true;
@@ -167,5 +175,16 @@ export class AppComponent {
   }
   setDevice(device:any){
     console.log("device", device);
+  }
+  animationTics(){
+    const step = () => {
+      // set mouse positions
+      let r:any = document.querySelector(':root');
+      r.style.setProperty('--mouse-x', this.currentMouseX+'px');
+      r.style.setProperty('--mouse-y', this.currentMouseY+'px');
+      //console.log("step");
+      window.requestAnimationFrame(step);
+    }
+    step();
   }
 }

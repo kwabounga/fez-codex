@@ -9,29 +9,37 @@
     padding: 1rem 2rem;
     padding: 20px;
     // background-color: #e3d3b1; // tres important sinon on ne voi pas la border mask ni le fond
-    .maskBorder();
+    .maskBorder(url("../../assets/decors/note_message.png") 25 fill / 25px / 0 repeat);
     .note.message_content {
       font-size: x-small;
     }
   }
 }
-.mw-5 .note.message_content {
-  max-width: 5rem;
 
-}
-.mw-10 .note.message_content {
-  max-width: 10rem;
-}
-.mw-20 .note.message_content {
-  max-width: 20rem;
-}
-.mw-30 .note.message_content {
-  max-width: 30rem;
-}
-.mw-40 .note.message_content {
-  max-width: 40rem;
-}
-.maskBorder() {
+@widths: 5,10,20,30,40;
+each(@widths, {
+  .mw-@{value} .note.message_content {
+    max-width: (@value * 1rem);
+  }
+});
+
+// .mw-5 .note.message_content {
+//   max-width: 5rem;
+// }
+// .mw-10 .note.message_content {
+//   max-width: 10rem;
+// }
+// .mw-20 .note.message_content {
+//   max-width: 20rem;
+// }
+// .mw-30 .note.message_content {
+//   max-width: 30rem;
+// }
+// .mw-40 .note.message_content {
+//   max-width: 40rem;
+// }
+
+.maskBorder(...) {
 
   /* cf: https://css-tricks.com/almanac/properties/m/mask-border/ */
   // pour un mask ( utilisation de la couleur de bg )
@@ -52,6 +60,11 @@
 
 
   // découpe de border à 9 coupes
-  -webkit-border-image: url("../../assets/decors/note_message.png") 25 fill / 25px / 0 repeat;
-  border-image: url("../../assets/decors/note_message.png") 25 fill / 25px / 0 repeat;
+  // -webkit-border-image: url("../../assets/decors/note_message.png") 25 fill / 25px / 0 repeat;
+  // border-image: url("../../assets/decors/note_message.png") 25 fill / 25px / 0 repeat;
+
+  -webkit-border-image: @arguments;
+  border-image: @arguments;
+
+
 }

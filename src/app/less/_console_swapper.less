@@ -53,38 +53,39 @@
     -webkit-transform: rotateX(-90deg) translateZ(calc(var(--cubeSize) / 2));
     -moz-transform: rotateX(-90deg) translateZ(calc(var(--cubeSize) / 2));
   }
+  .front {
+    // 1
+    background: rgba(255, 0, 0, 0.5);
+    .wall_console('ps4');
+
+  }
+
+  .back {
+    // 2
+    background: rgba(0, 255, 0, 0.5);
+    .wall_console('switch');
+  }
+
+  .right {
+    background: rgba(0, 0, 255, 0.5);
+  }
+
+  .left {
+    // 4
+    background: rgba(0, 255, 255, 0.5);
+    .wall_console('xbox');
+  }
+
+  .top {
+    background: rgba(255, 0, 255, 0.5);
+  }
+
+  .bottom {
+    background: rgba(255, 255, 0, 0.5);
+  }
 }
 
-.front {
-  // 1
-  background: rgba(255, 0, 0, 0.5);
-  .wall_console('ps4');
 
-}
-
-.back {
-  // 2
-  background: rgba(0, 255, 0, 0.5);
-  .wall_console('switch');
-}
-
-.right {
-  background: rgba(0, 0, 255, 0.5);
-}
-
-.left {
-  // 4
-  background: rgba(0, 255, 255, 0.5);
-  .wall_console('xbox');
-}
-
-.top {
-  background: rgba(255, 0, 255, 0.5);
-}
-
-.bottom {
-  background: rgba(255, 255, 0, 0.5);
-}
 
 /// faire une animation  0 > 100% pour chaque possibilité; ps4 / switch / x-box , et changer la classe associée lors d'un clic
 
