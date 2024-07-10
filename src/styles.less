@@ -264,7 +264,11 @@ body {
     // margin-left: auto;
     // margin-right: auto;
     background: transparent url("./assets/decors/stone_wall.png") repeat local 0px 0px;
-    background-size: contain;
+    background-size:  calc(var(--groundSize) * 4) calc(var(--groundSize) * 6);
+    &.x_h2{
+      height: calc(var(--groundSize) * 12);
+      background-size:  calc(var(--groundSize) * 4) calc(var(--groundSize) * 6);
+    }
   }
   .decor_tree{
     height: calc(var(--groundSize) * 5.49);
