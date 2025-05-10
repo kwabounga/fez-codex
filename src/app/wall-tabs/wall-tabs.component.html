@@ -10,7 +10,8 @@
           [attr.data-bs-target]="'#tab'+id"
           role="tab"
           aria-controls="public"
-          aria-selected="true">
+          aria-selected="true"
+          (click)="click(id)">
         <div class="msg"></div>
         </a>
       </nav>
@@ -24,7 +25,7 @@
         aria-labelledby="public-tab" >
         <app-message-note class="m-l-2"
               [msgClass]="'mw-20'"
-              >{{message.join('')}}
+              >{{message.message}}
               </app-message-note>
 
       </div>

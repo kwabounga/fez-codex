@@ -41,3 +41,18 @@ woooo ! https://github.com/ecuber/tesseract/tree/master?tab=readme-ov-file      
 
 
 [css only](https://codepen.io/stix/pen/dMaENK)
+
+
+a quoi servait ceci ! ? ( dans angular.json > scripts)
+
+```json
+"scripts": [
+  ...
+              ,
+              {
+                "input" :"src/lib/scrollable-tabs.js",
+                "inject": true
+              }
+  ...
+]
+```

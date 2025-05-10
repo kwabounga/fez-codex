@@ -51,10 +51,6 @@
               {
                 "input" :"node_modules/move-js/move.min.js",
                 "inject": true
-              },
-              {
-                "input" :"src/lib/scrollable-tabs.js",
-                "inject": true
               }
             ]
           },

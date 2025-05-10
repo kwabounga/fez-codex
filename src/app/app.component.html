@@ -11,7 +11,7 @@
   <div class="container-fluid {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}}">
     <div class="row g-0">
       <div class="col col-12 z-1">
-        <!-- <app-hypercube></app-hypercube> -->
+        <app-hypercube></app-hypercube>
         <div class="decor_seagull m-auto"></div>
         <div class="decor_tree"></div>
         <div class="decor_portal">
@@ -59,7 +59,9 @@
           <div class="col-12 col-md-6 ">
             <div class="decor_stone_wall not_decor m-l-auto w-90 with-moss with-house">
             <app-wall-tabs
-            [messages]="messages"></app-wall-tabs>
+            [messages]="messages"
+            (onSelectMessage)="setCurrentMessageId($event)"
+            ></app-wall-tabs>
           </div>
           </div>
           <div class="col-12 col-md-6">
@@ -90,9 +92,31 @@
       </div>
       <div class="row g-0">
         <div class="col-12 col-md-6 ">
-          <!-- <div class="decor_stone_wall not_decor m-l-auto w-90 ">
-            gauche
-          </div> -->
+
+          <!-- elements -->
+        <div class="container">
+          <div class="row gx-5 justify-content-center">
+            <div class="col-12 col-lg-6  w-auto mt-10">
+              <app-tablet
+              [tiles]="tiles"
+              [mapping] = "mapping"
+              [message]="currentMessageObject.message"
+              (onErase)="razMessage($event)"
+              (onNew)="newMessage($event)"
+              (onSelect)="assignGlyph($event)"
+              (onSet)="setTiles($event)"
+              ></app-tablet>
+            </div>
+            <div class="col-12 col-lg-6  w-auto mt-10">
+              <app-translator
+              [tiles]="tiles"
+              [mapping] = "mapping"
+              (onSave)="saveMessage($event)"
+              ></app-translator>
+            </div>
+          </div>
+        </div>
+        <!-- !elements -->
         </div>
         <div class="col-12 col-md-6">
           <div class="decor_stone_wall x_h2 not_decor m-r-auto w-90">
@@ -101,26 +125,9 @@
         </div>
       </div>
       <div class="col col-12">
-        <!-- elements -->
-        <div class="container">
-          <div class="row gx-5 justify-content-center">
-            <div class="col-12 col-lg-6  w-auto">
-              <app-tablet
-              [tiles]="tiles"
-              [mapping] = "mapping"
-              (onErase)="razMessage($event)"
-              (onSelect)="assignGlyph($event)"
-              ></app-tablet>
-            </div>
-            <div class="col-12 col-lg-6  w-auto">
-              <app-translator
-              [tiles]="tiles"
-              [mapping] = "mapping"
-              ></app-translator>
-            </div>
+        <div class="decor_stone_wall not_decor m-l-auto w-90 ">
+            center
           </div>
-        </div>
-        <!-- !elements -->
       </div>
     </div>
   </div>

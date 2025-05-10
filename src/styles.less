@@ -201,9 +201,17 @@ body {
 .mt-5{
   margin-top: var(--tileSize)!important;
 }
+.mt-10{
+  margin-top: calc(var(--tileSize) * 2)!important;
+}
+.mt-15{
+  margin-top: calc(var(--tileSize) * 3)!important;
+}
 .rel {
   position: relative;
 }
+.new-btn,
+.save-btn,
 .reset-btn{
   position: absolute;
   top: -3rem;
@@ -213,6 +221,9 @@ body {
 .reset-btn.space-letter{
 
   right: var(--tileSize);
+}
+.new-btn{
+  right:3rem;
 }
 
 
@@ -291,12 +302,12 @@ body {
     height: calc(var(--groundSize) * 2);
     background: transparent url("./assets/decors/low_wall.png") repeat local 0px 0px;
     background-size: contain;
-    }
-    .decor_ground{
-    height: var(--groundSize);
-    background: transparent url("./assets/decors/stone bar 1.png") repeat local 0px 0px;
-    background-size: contain;
-    }
+  }
+  .decor_ground{
+  height: var(--groundSize);
+  background: transparent url("./assets/decors/stone bar 1.png") repeat local 0px 0px;
+  background-size: contain;
+  }
   .decor_ground.brown{
     background: transparent url("./assets/decors/brown_ground.png") repeat local 0px 0px;
     background-size: contain;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
+import { TranslatorComponent } from './translator/translator.component';
 
 const LOCAL_STORAGE_KEY:string = 'fez_codex_state';
 const GLYPH_DEFAULT_VALUE:number = -1;
@@ -74,57 +75,99 @@ export class AppComponent {
     "34":"?",
     "35":"?",
   }
+
   symbols = Object.keys(this.mapping);
   messages:any = [ ];
-  tiles:string[] = [
-    "01","07","02","01","00","03","02",
-    "01","00","00","26","00","00","01",
-    "01","07","02","01","00","03","01",
-    "01","07","00","01","05","03","05",
-    "01","00","02","01","05","03","08",
-    "00","00","00","00","05","03","09",
-    "00","07","02","01","05","03","00",
-    "01","07","02","01","05","03","04",
-    "00","07","02","00","05","03","05",
-    "01","00","00","01","05","03","35",
-    "01","07","02","01","05","05","05","05",
-  ];
+  tiles:string[] = [ ];
+  currentMessageObject:any = {}
+  /*[
 
+     "01","07","02","01","00","03",
+     "02","01","00","00","26","00",
+     "00","01","01","07","02","01",
+     "00","03","01","01","07","00",
+     "01","05","03","05","01","00",
+     "02","01","05","03","08","00",
+     "00","00","00","05","03","09",
+     "00","07","02","01","05","03",
+     "00","01","07","02","01","05",
+     "03","04","00","07","02","00",
+     "05","03","05","01","00","00",
+     "01","05","03","35","01","07",
+     "02","01","05","05","05","05",
+
+    ];*/
   ngOnInit(){
     let save = this.retrieveFromLocalStorage();
     if(save){
       this.messages = save.messages
       this.mapping = save.mapping
-      this.tiles  = this.copieMessage(0);
+      this.currentMessageObject  = this.getMessage(this.currentMessage);
+      this.tiles  = this.currentMessageObject.tiles;
       this.uiHidden = save.uiHidden??true;
     }
   }
 
   razMessage(event:any){
     console.log('razMessage',event)
-    this.tiles = new Array(78).fill('00');
+    this.tiles = Array(78).fill('00');
+    this.currentMessageObject.message = "";
+    this.currentMessageObject.tiles = this.tiles;
+  }
+  newMessage(event:any){
+    this.currentMessage = this.messages.length;
+    console.log('newMessage this.currentMessage', this.currentMessage)
+    this.currentMessageObject  = this.getMessage(this.currentMessage);
+    this.tiles  = this.currentMessageObject.tiles;
   }
 
-  copieMessage(_msgId:number){
-    console.log('copieMessage')
-    return Object.create(this.messages[_msgId]);
+  getMessage(_msgId:number){
+    console.log('getMessage')
+    if(this.messages[_msgId]){
+      return this.messages[_msgId];
+    } else{
+      let msg = {tiles:Array(78).fill('00'), message:"" };
+      this.messages.push(msg);
+      return this.messages[_msgId];
+    }
   }
 
-  saveMessage(){
-    console.log('saveMessage')
-    this.messages.push(Object.create(this.tiles));
+  saveMessage(event:any){
+    console.log('saveMessage(app)', event)
+    this.currentMessageObject = event
+    this.tiles  = this.currentMessageObject.tiles;
+    this.messages[this.currentMessage] = this.currentMessageObject
+    // this.messages.push(event);
   }
 
+  setCurrentMessageId(msgId: any) {
+    this.currentMessage = msgId;
+    this.currentMessageObject  = this.getMessage(this.currentMessage);
+    this.tiles  = this.currentMessageObject.tiles;
+  }
 
   // tablet & antic-keyboard part
+
   assignGlyph(glyphId: any) {
     console.log("glyphId ", glyphId)
     this.currentGlyph = glyphId
   }
+  // tablet & antic-keyboard part
+  setTiles(event: any) {
+    console.log("new tile set ", event)
+    this.tiles = event;
+  }
 
   onSelectGlyphFromAnticKeyBoard(glyphID: any) {
-    this.tiles[this.currentGlyph] = glyphID;
-    this.currentGlyph = GLYPH_DEFAULT_VALUE;
+    if(this.tiles){
+      this.tiles[this.currentGlyph] = glyphID;
+      this.currentGlyph = GLYPH_DEFAULT_VALUE;
+    }
+    this.currentMessageObject.message = TranslatorComponent.translate(this.tiles, this.mapping).join('')
+    // this.saveMessage({
+    //   tiles: this.tiles,
+    //   message: TranslatorComponent.translate(this.tiles)
+    // })
   }
 
   // codex & keyboard part
@@ -146,6 +189,7 @@ export class AppComponent {
   }
 
   saveToLocalStorage() {
+    console.log(this.messages);
     this.localStorageService.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify({

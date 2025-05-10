@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-wall-tabs',
@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class WallTabsComponent {
   @Input() messages?:any = [];
+  @Output() onSelectMessage = new EventEmitter<any>();
+  click(id:any){
+    console.log("message selected ", id);
+    this.onSelectMessage.emit(id);
+  }
 }

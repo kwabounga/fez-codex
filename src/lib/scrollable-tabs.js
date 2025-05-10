@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const scrollBarWidths = 40;
   const wrapper = document.getElementsByClassName("wrapper-nav")[0];
   const navLink = document.getElementsByClassName("nav-item nav-link");
+  console.log(navLink);
+  if(navLink.length)
   const lastNavLink = navLink[navLink.length - 1];
 
   const scrollerRight = document.getElementsByClassName("scroller-right")[0];
@@ -119,10 +121,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   let getOuterLeft = function(elem) {
-      return elem.getBoundingClientRect().left;
+      return elem?.getBoundingClientRect().left??0;
   }
 
   let getOuterWidth = function(elem) {
+    console.log("elem");
+    console.log(typeof elem);
       return parseFloat(window.getComputedStyle(elem).width);
   }
   function fade(elem) {

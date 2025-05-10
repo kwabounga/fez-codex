@@ -17,7 +17,7 @@ onclick(event:any) {
   @Output() onSelect = new EventEmitter<any>();
 
   selectGlyph(tileId: any) {
-    console.log('glyph', tileId)
+    console.log('antic glyph', tileId)
     this.onSelect.emit(tileId);
   }
 }

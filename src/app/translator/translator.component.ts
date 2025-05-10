@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-translator',
@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
   host: {class:"d-contents"}
 })
 export class TranslatorComponent {
-  @Input() tiles?: string[];
+  @Output() onSave = new EventEmitter<any>();
+  @Input() tiles: string[] = [];
   @Input() mapping: any = {
     "00":" ",
     "01":"e",
@@ -38,5 +39,51 @@ export class TranslatorComponent {
   get message() {
     return this.tiles?.map((letter)=>{return this.mapping[letter]})
   }
+  get translation() {
+    let reordered = TranslatorComponent.translate(this.tiles, this.mapping);
+    // let reordered = [];
+    // let total = this.tiles?.length ?? 78;
+    // let nbColumns = 6;
+    // let nbRows = total / nbColumns
+    // let indice = total;
+    // if(this.tiles){
+    //   for (let i = 0; i < nbColumns; i++) {
+    //     indice = total - (nbRows * (i+1))
+    //     for (let t = indice; t < (indice + nbRows); t++) {
+    //       reordered.push(this.tiles[t]);
 
+    //     }
+
+    //   }
+    // }
+
+    return reordered
+  }
+  saveMessage(event:any) {
+    let msg = this.translation
+    console.log(msg.join(''))
+    this.onSave.emit({
+      message: msg.join(''),
+      tiles: this.tiles
+    });
+  }
+  static translate (tiles:any,mapping:any) {
+    let reordered = [];
+    let total = tiles?.length ?? 78;
+    let nbColumns = 6;
+    let nbRows = total / nbColumns
+    let indice = total;
+    if(tiles){
+      for (let i = 0; i < nbColumns; i++) {
+        indice = total - (nbRows * (i+1))
+        for (let t = indice; t < (indice + nbRows); t++) {
+          reordered.push(tiles[t]);
+
+        }
+
+      }
+    }
+
+    return reordered.map((letter)=>{return mapping[letter]})
+  }
 }

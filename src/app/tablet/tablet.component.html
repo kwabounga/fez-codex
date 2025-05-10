@@ -14,7 +14,8 @@
     [letter]="'t'"
   ></app-tile> -->
 
-  <ng-container *ngIf="tiles">
+  <div class="grid-container tablet rel " *ngIf="tiles">
+    <app-letter [letter]="'n'" [ngClass]="'new-btn'" (click)="newMessage($event)"></app-letter>
     <app-letter [letter]="'r'" [ngClass]="'reset-btn'" (click)="resetGlyph($event)"></app-letter>
     <app-tile
       *ngFor="let tile of tiles, let id = index;"
@@ -22,4 +23,9 @@
       [letter]="mapping?mapping[tile]:undefined"
       (click)="selectGlyph(id)"
     ></app-tile>
-  </ng-container>
+
+  </div>
+  <div class=" tablet mt-10 rel">
+    <!-- <app-letter [letter]="'s'" [ngClass]="'save-btn'" (click)="saveMessage($event)"></app-letter> -->
+    <textarea #textbox [value]="message" (input)="message = textbox.value;messageChange($event)"></textarea>
+  </div>
