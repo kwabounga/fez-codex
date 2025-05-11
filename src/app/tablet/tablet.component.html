@@ -14,18 +14,24 @@
     [letter]="'t'"
   ></app-tile> -->
 
-  <div class="grid-container tablet rel " *ngIf="tiles">
+  <div class="grid-container tablet rel " *ngIf="tiles" [attr.selected]="53">
     <app-letter [letter]="'n'" [ngClass]="'new-btn'" (click)="newMessage($event)"></app-letter>
     <app-letter [letter]="'r'" [ngClass]="'reset-btn'" (click)="resetGlyph($event)"></app-letter>
-    <app-tile
+    <app-screen-glyph
+      [tiles]="tiles"
+      [mapping]="mapping"
+      (onSelectGlyph)="selectGlyph($event)"
+      ></app-screen-glyph>
+
+    <!-- <app-tile
       *ngFor="let tile of tiles, let id = index;"
       [asset]="tile"
       [letter]="mapping?mapping[tile]:undefined"
       (click)="selectGlyph(id)"
-    ></app-tile>
+    ></app-tile> -->
 
   </div>
   <div class=" tablet mt-10 rel">
     <!-- <app-letter [letter]="'s'" [ngClass]="'save-btn'" (click)="saveMessage($event)"></app-letter> -->
-    <textarea #textbox [value]="message" (input)="message = textbox.value;messageChange($event)"></textarea>
+    <textarea #textbox [value]="message" (input)="message = textbox.value;messageChange($event);" rows="6" class="user-input"></textarea>
   </div>

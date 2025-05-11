@@ -30,9 +30,9 @@
           <div class="decor_mister m-l-3"></div>
         </div>
         <div class="decor_ground with-moss "></div>
-        <div class="decor_low_wall shadowed"></div>
+        <div class="decor_low_wall shadowed w-70 self-centered"></div>
         <div class="row g-0 ">
-          <div class="col-12 ">
+          <div class="col-6 m-auto ">
             <div class="decor_stone_wall decor_stone_wall-w100 m-auto w-90 not_decor with-moss flex-center">
               <app-message-note class="m-l-2"
               [msgClass]="'mw-5'"
@@ -42,6 +42,12 @@
                 [choices]="['ps4','xbox','switch']"
                 (swapperChanged)="setDevice($event)"
               ></app-console-swapper>
+              <app-screen-glyph
+              [tiles]="[ '01', '11', '15', '17', '17', '00', '01', '08', '24', '05', '15', '00', '00', '11', '24', '20', '08', '02', '17', '00', '29', '00', '00', '00', '00', '00', '27', '00', '03', '24', '04', '15', '13', '00', '28', '00', '00', '00', '00', '24', '20', '12', '15', '20', '00', '26', '00', '07', '23', '20', '12', '00', '22', '17', '23', '22', '14', '00', '23', '05', '00', '00', '00', '00', '00', '01', '11', '15', '17', '17', '00', '22', '24', '12', '15', '16', '00', '00' ]"
+              [mapping]="mapping"
+              [isHalfed]="true"
+              [ngClass]="'tablet'"
+      ></app-screen-glyph>
           </div>
           </div>
         </div>
@@ -119,14 +125,41 @@
         <!-- !elements -->
         </div>
         <div class="col-12 col-md-6">
-          <div class="decor_stone_wall x_h2 not_decor m-r-auto w-90">
-            droite
+          <div class="decor_stone_wall x_h3 not_decor m-r-auto w-50 with-shadow with-house">
+            <div class="container {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}} logic-elements {{uiHidden?'d-none':''}}">
+              <app-antic-keyboard
+              [title]="'gLyph kbd'"
+              [mapping]="mapping"
+              [ngClass]="'antic-keyboard'"
+              (onSelect)="onSelectGlyphFromAnticKeyBoard($event)"
+              >
+            </app-antic-keyboard>
+            <!-- <app-antic-keyboard
+              [title]="'NUm'"
+              [charas]="[ ]"
+              [mapping]="mapping"
+              [ngClass]="'antic-keyboard-num t-25-r-3'"
+              >
+            </app-antic-keyboard> -->
+              <app-keyboard
+              [ngClass]="'keyboard'"
+              (onSelect)="onSelectLetterFromKeyBoard($event)">
+            </app-keyboard>
+              <app-codex
+              [tiles]="symbols"
+              [mapping]="mapping"
+              (onSelect)="assignLetter($event)"
+              [currentTile]="currentTile"
+              ></app-codex>
+            </div>
           </div>
         </div>
       </div>
       <div class="col col-12">
         <div class="decor_stone_wall not_decor m-l-auto w-90 ">
             center
+
+
           </div>
       </div>
     </div>
@@ -134,32 +167,7 @@
 
 
 
-<div class="container {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}} logic-elements {{uiHidden?'d-none':''}}">
-  <app-antic-keyboard
-  [title]="'gLyph kbd'"
-  [mapping]="mapping"
-  [ngClass]="'antic-keyboard t-25-r-12'"
-  (onSelect)="onSelectGlyphFromAnticKeyBoard($event)"
-  >
-</app-antic-keyboard>
-<!-- <app-antic-keyboard
-  [title]="'NUm'"
-  [charas]="[ ]"
-  [mapping]="mapping"
-  [ngClass]="'antic-keyboard-num t-25-r-3'"
-  >
-</app-antic-keyboard> -->
-  <app-keyboard
-  [ngClass]="'keyboard'"
-  (onSelect)="onSelectLetterFromKeyBoard($event)">
-</app-keyboard>
-  <app-codex
-  [tiles]="symbols"
-  [mapping]="mapping"
-  (onSelect)="assignLetter($event)"
-  [currentTile]="currentTile"
-  ></app-codex>
-</div>
+
 
 <div class="empty"></div>
 <div class="water"></div>

@@ -4,7 +4,7 @@ import { Component, Input, Output,EventEmitter } from '@angular/core';
   selector: 'app-codex',
   templateUrl: './codex.component.html',
   styleUrls: ['./codex.component.less'],
-  host: {class: "grid-container-codex  tablet tablet-alt z-1 movable"},
+  host: {class: "grid-container-codex codex tablet tablet-alt z-1 movable"},
 })
 export class CodexComponent {
 

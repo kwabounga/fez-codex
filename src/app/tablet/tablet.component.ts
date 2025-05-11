@@ -1,6 +1,9 @@
 import { Component, Input, Output,EventEmitter, OnInit ,OnChanges} from '@angular/core';
 
-
+/*
+instructions to show spell codex:
+  'spell codex  click in     order 1 bird 2 gomez 3    portal 4     spell stone';
+*/
 @Component({
   selector: 'app-tablet',
   templateUrl: './tablet.component.html',
@@ -15,7 +18,7 @@ export class TabletComponent {
   @Output() onSelect = new EventEmitter<any>();
   @Output() onSet = new EventEmitter<any>();
   @Output() onNew = new EventEmitter<any>();
-
+  selectedTileId:number = -1;
   ngOnChanges(){
 
   }
@@ -60,6 +63,15 @@ export class TabletComponent {
     this.onErase.emit('erase');
   }
   selectGlyph(tileId:any){
+    this.selectedTileId = tileId
+    let r:any = document.querySelector(':root');
+    r.style.setProperty('--selected-tile-id', tileId);
+    let tt:any = document.querySelectorAll(`app-tablet .grid-container.tablet app-tile .tile`);
+    tt.forEach((t:any) => {
+      t.classList.remove('selected')
+    });
+    let t:any = document.querySelector(`app-tablet .grid-container.tablet app-tile:nth-of-type(${tileId+1}) .tile`);
+    t.classList.add('selected')
     this.onSelect.emit(tileId);
   }
   setMessage(event:any){

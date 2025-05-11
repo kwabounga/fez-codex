@@ -16,6 +16,7 @@ import { SpaceTimeRiftComponent } from './space-time-rift/space-time-rift.compon
 import { ConsoleSwapperComponent } from './console-swapper/console-swapper.component';
 import { MessageNoteComponent } from './message-note/message-note.component';
 import { HypercubeComponent } from './hypercube/hypercube.component';
+import { ScreenGlyphComponent } from './screen-glyph/screen-glyph.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HypercubeComponent } from './hypercube/hypercube.component';
     SpaceTimeRiftComponent,
     ConsoleSwapperComponent,
     MessageNoteComponent,
-    HypercubeComponent
+    HypercubeComponent,
+    ScreenGlyphComponent
   ],
   imports: [
     BrowserModule

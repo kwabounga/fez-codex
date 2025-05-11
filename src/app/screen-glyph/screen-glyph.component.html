@@ -1,0 +1,10 @@
+<ng-container *ngIf="tiles">
+  <div class="grid-container {{ isHalfed?'half-grid-container':'' }} tablet rel">
+  <app-tile
+        *ngFor="let tile of tiles, let id = index;"
+        [asset]="tile"
+        [letter]="mapping?mapping[tile]:undefined"
+        (click)="selectGlyph(id)"
+      ></app-tile>
+  </div>
+  </ng-container>

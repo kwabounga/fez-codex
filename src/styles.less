@@ -72,15 +72,7 @@ body {
   display: contents;
 }
 
-.grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  row-gap: 0;
-  flex-direction: column;
-
-
-}
+.grid-container ,
 .grid-container-screen {
   display: flex;
   flex-wrap: wrap;
@@ -94,15 +86,26 @@ body {
   max-height: calc(2.8rem + calc(var(--tileSize) * 13));
   max-width: calc(1.2rem + calc(var(--tileSize) * 6));
 }
-.screen{
+
+.half-grid-container {
+  --tileSize-half: calc(var(--tileSize) * .5);
+  max-height: calc(2.8rem + calc(var(--tileSize-half) * 13));
+  max-width: calc(1.2rem + calc(var(--tileSize-half) * 6));
+}
+.half-grid-container  {
+  .letter img ,
+  .tile img {
+    max-width: calc(var(--tileSize-half)* 1);
+    max-height: calc(var(--tileSize-half)* 1);
+  }
+}
+.screen {
   max-width: calc(1.2rem + calc(var(--tileSize) * 6));
-  min-height: 4rem;
+  min-height: 9.35rem;
   user-select: text;
 }
 .grid-container-antic {
-  position: fixed;
-  bottom: 7rem;
-  right: 2rem;
+  // position: fixed;
 
   display: flex;
   flex-wrap: wrap;
@@ -116,9 +119,8 @@ body {
   display: inline-flex;
 }
 .grid-container-alphabet {
-  position: fixed;
-  bottom: 25rem;
-  right: 2rem;
+  // position: fixed;
+
 
   display: flex;
   flex-wrap: wrap;
@@ -137,9 +139,7 @@ body {
   display: flex;
 }
 .grid-container-codex {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
+
 
   display: flex;
   flex-wrap: wrap;
@@ -152,17 +152,27 @@ body {
 
 .antic-keyboard-num {
 
+  top: 27rem;
+  left: 1.7rem;
 }
 .antic-keyboard{
-  top: 25rem;
-  right: 3rem;
-  // -webkit-box-shadow: inset -3px -3px 5px 5px #27213D, 0px 0px 0px 10px #50447D;
-  // box-shadow: inset -3px -3px 5px 5px #27213D, 0px 0px 0px 10px #50447D;
+
+  top: 24.2rem;
+  left: 1.7rem;
 }
+.keyboard-alphabet {
+  top: 38rem;
+  left: 1.7rem;
+}
+
 .codex {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+
+  position: fixed;
+  top: 2rem;
+  left: 1.7rem;
 }
 .img-logo {
   width: 10rem;
@@ -190,7 +200,7 @@ body {
   cursor: grab;
 }
 .movable {
-
+  position: absolute;
 }
 .draggable:hover {
 }
@@ -251,8 +261,15 @@ body {
 
 
 
-
-
+  .self-centered {
+    justify-self: center;
+  }
+  .self-start {
+    justify-self: flex-start;
+  }
+  .self-end {
+    justify-self: flex-end;
+  }
 
   .shadered {
     //image-rendering: pixelatedfilter: blur(2px) ;
@@ -278,6 +295,10 @@ body {
     background-size:  calc(var(--groundSize) * 4) calc(var(--groundSize) * 6);
     &.x_h2{
       height: calc(var(--groundSize) * 12);
+      background-size:  calc(var(--groundSize) * 4) calc(var(--groundSize) * 6);
+    }
+    &.x_h3{
+      height: calc(var(--groundSize) * 18);
       background-size:  calc(var(--groundSize) * 4) calc(var(--groundSize) * 6);
     }
   }
@@ -318,6 +339,7 @@ body {
   .shadowed{
     filter: brightness(.6);
   }
+  .with-shadow,
   .with-gomez,
   .with-house,
   .with-moss,
@@ -377,6 +399,13 @@ body {
   .decor_mister {
     .createElement('mister.png',var(--mister-width),var(--mister-height))
   }
+
+/* additionals declarations */
+  .decor_intello {
+    margin-top: calc(var(--groundSize) * 1.2);
+  }
+
+
   .createElement (@asset:'gomez.png', @width:0, @height:0) {
     background: transparent url("./assets/decors/@{asset}") no-repeat local 0px 0px;
     background-size: contain;
@@ -404,6 +433,19 @@ body {
   .with-moss:after {
     content:" ";
     background: transparent url("./assets/decors/moss.png") repeat local 0px 0px;
+    background-size: auto;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: calc(var(--groundSize) / 2.6);
+    pointer-events: none;
+  }
+  .with-shadow:after {
+    content:" ";
+    background: #2b1703;
+    opacity: .5;
+    mix-blend-mode: multiply;
     background-size: auto;
     position: absolute;
     top:0;
@@ -509,4 +551,33 @@ each(@sizes, {
   justify-content: center;
   align-items: center;
   gap:2rem;
+}
+
+.user-input{
+  overflow: hidden;
+}
+.msg-translated {
+  text-wrap: wrap;
+  white-space: normal;
+}
+
+app-tablet  .grid-container.tablet app-tile .tile.selected {
+  outline: solid 2px #bcff92;
+  z-index: 1;
+}
+
+.list {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  min-width: unset;
+  margin-top: 0px;
+  flex-wrap: wrap;
+  display: flex;
+  border-bottom: none;
+  --bs-nav-tabs-border-radius : 0;
+}
+.wrapper-nav {
+  height: auto ;
+  padding: 5px 0 0 215px;
 }
