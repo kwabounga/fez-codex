@@ -52,6 +52,7 @@ export class LetterComponent {
     "10":"./assets/Letters/number 10.png",
   }
   @Input() letter: string='?';
+  @Input() titleForced?: string;
   constructor(
     private elem: ElementRef
     ) { }
@@ -73,6 +74,6 @@ export class LetterComponent {
     return (this.letter == '?');
   }
   get title ():string {
-    return (this.unknown?'?':(this.letter!=" "?this.letter:"space"));
+    return this.titleForced ?? (this.unknown?'unknown':(this.letter!=" "?this.letter:"space"));
   }
 }

@@ -1,0 +1,39 @@
+
+.wrapper {
+  --current-glyph-position: 0;
+  --height:1.5rem;
+  --width:3rem;
+
+    width: var(--width);
+    display: inline-block;
+    
+  .selector{
+      background-color: aliceblue;
+      height: calc(var(--height) * .5 );
+      width: var(--width);
+    &.preview{
+    }
+    &.next{
+
+    }
+  }
+  .glyph-wrapper{
+    position: relative;
+    height: var(--height);
+    width: var(--width);
+    overflow: hidden;
+    .glyphs{
+      top:calc(calc(var(--height) * var(--current-glyph-position)) * -1);
+      position: absolute;
+      transition: all .5s;
+
+      .glyph{
+        height: var(--height);
+        width: var(--width);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

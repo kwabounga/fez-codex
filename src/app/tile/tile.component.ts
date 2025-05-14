@@ -48,6 +48,7 @@ export class TileComponent {
   }
   @Input() asset?: string;
   @Input() letter: string='?';
+  @Input() titleForced?: string;
   tooltipElement!:any;
 
   constructor(
@@ -89,6 +90,7 @@ export class TileComponent {
     return (this.letter == '?');
   }
   get title ():string {
-    return (this.unknown?'?':(this.letter!=" "?this.letter:"space"));
+
+    return this.titleForced ?? (this.unknown ? '?' : (this.letter != " " ? this.letter : "space"));
   }
 }

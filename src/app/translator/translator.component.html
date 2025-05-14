@@ -6,7 +6,7 @@
 
   <!-- mini screen -->
   <div class="mt-10 rel">
-    <app-letter [letter]="'s'" [ngClass]="'save-btn'" (click)="saveMessage($event)"></app-letter>
+    <app-letter [letter]="'s'" [titleForced]="'save'" [ngClass]="'save-btn'" (click)="saveMessage($event)"></app-letter>
     <p class="tablet screen p-1">
       <span class="msg-translated">{{translation.join('')}}</span>
     </p>

@@ -15,8 +15,8 @@
   ></app-tile> -->
 
   <div class="grid-container tablet rel " *ngIf="tiles" [attr.selected]="53">
-    <app-letter [letter]="'n'" [ngClass]="'new-btn'" (click)="newMessage($event)"></app-letter>
-    <app-letter [letter]="'r'" [ngClass]="'reset-btn'" (click)="resetGlyph($event)"></app-letter>
+    <app-letter [letter]="'n'" [titleForced]="'new'" [ngClass]="'new-btn'" (click)="newMessage($event)"></app-letter>
+    <app-letter [letter]="'r'" [titleForced]="'reset'" [ngClass]="'reset-btn'" (click)="resetGlyph($event)"></app-letter>
     <app-screen-glyph
       [tiles]="tiles"
       [mapping]="mapping"

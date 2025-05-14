@@ -56,3 +56,8 @@ a quoi servait ceci ! ? ( dans angular.json > scripts)
   ...
 ]
 ```
+
+
+## carousel vertical 
+https://vineethtrv.github.io/Bootstrap-vertical-carousel/
+https://getbootstrap.com/docs/4.0/components/carousel/

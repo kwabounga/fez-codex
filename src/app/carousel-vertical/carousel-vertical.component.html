@@ -1,0 +1,20 @@
+<div class="wrapper" [style.--current-glyph-position]="currentPosition">
+  <button class="selector preview"
+  [disabled]="(this.currentPosition <= 0)"
+  (click)="preview($event)"
+    ></button>
+  <div class="glyph-wrapper">
+    <div class="glyphs">
+      <div *ngFor="let glyph of allGlyphs, let id = index" class="glyph" [attr.glyph]="glyph">
+        <app-controller-button-mapping
+          [isGlyphsSet]="isGlyphs"
+          [glyphID]="glyph"
+        ></app-controller-button-mapping>
+      </div>
+    </div>
+  </div>
+  <button class="selector next"
+  [disabled]="(this.currentPosition >= (allGlyphs.length - 1))"
+  (click)="next($event)"
+  ></button>
+</div>

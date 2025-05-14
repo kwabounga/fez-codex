@@ -17,6 +17,9 @@ import { ConsoleSwapperComponent } from './console-swapper/console-swapper.compo
 import { MessageNoteComponent } from './message-note/message-note.component';
 import { HypercubeComponent } from './hypercube/hypercube.component';
 import { ScreenGlyphComponent } from './screen-glyph/screen-glyph.component';
+import { CarouselVerticalComponent } from './carousel-vertical/carousel-vertical.component';
+import { SpellMappingSelectorComponent } from './spell-mapping-selector/spell-mapping-selector.component';
+import { ControllerButtonMappingComponent } from './controller-button-mapping/controller-button-mapping.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { ScreenGlyphComponent } from './screen-glyph/screen-glyph.component';
     ConsoleSwapperComponent,
     MessageNoteComponent,
     HypercubeComponent,
-    ScreenGlyphComponent
+    ScreenGlyphComponent,
+    CarouselVerticalComponent,
+    SpellMappingSelectorComponent,
+    ControllerButtonMappingComponent
   ],
   imports: [
     BrowserModule
