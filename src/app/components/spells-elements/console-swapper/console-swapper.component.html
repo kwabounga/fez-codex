@@ -2,7 +2,7 @@
   <div class="device_selector">
     <div *ngFor="let choice of choices, let id = index"  class="form-check form-switch fez-switch {{choice}}">
       <input class="form-check-input" type="radio" id="device_{{choice}}" [checked]="(id===0)"  name="device"
-        (change)="selectDevice(choice)"
+        (change)="selectDevice(id)"
       >
     </div>
   </div>

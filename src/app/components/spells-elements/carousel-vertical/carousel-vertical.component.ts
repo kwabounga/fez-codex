@@ -11,6 +11,7 @@ export class CarouselVerticalComponent {
 
   @Input() isGlyphs:boolean = true;
   @Input() allGlyphs:string[] = [];
+  @Input() consoleID:number = 0;
   constructor(
     private elem: ElementRef
   ) { }

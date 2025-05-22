@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { TranslatorComponent } from './translator/translator.component';
+import { TranslatorComponent } from './components/codex-elements/translator/translator.component';
 
 const LOCAL_STORAGE_KEY:string = 'fez_codex_state';
 const GLYPH_DEFAULT_VALUE:number = -1;
@@ -21,6 +21,8 @@ export class AppComponent {
   currentTile:string = "00";
   currentMessage:number = 0;
   title = 'fez_codex';
+  consoleID:number = 0;
+  allConsoles: string[] = ['ps4','xbox','switch'];
 
   constructor(private localStorageService: LocalStorageService) {
     document.addEventListener('scroll', (event:any) => {
@@ -204,8 +206,9 @@ export class AppComponent {
     return value ? JSON.parse(value) : null;
   }
 
-  setDevice(device:any){
-    console.log("device", device);
+  setDevice(deviceID:number){
+    console.log("device", this.allConsoles[deviceID]);
+    this.consoleID = deviceID
   }
 
   animationTics(){

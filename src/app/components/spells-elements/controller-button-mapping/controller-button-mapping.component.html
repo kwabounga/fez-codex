@@ -1,0 +1,4 @@
+<ng-container>
+  <img *ngIf="isGlyphsSet" src="assets/spells/glyphs/{{mapping[glyphID]}}" alt="">
+  <img *ngIf="!isGlyphsSet" src="assets/spells/buttons/{{consolesMapping[consoleID]}}/{{mapping[glyphID]}}" alt="">
+</ng-container>

@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
   host:{class:"word"},
 })
 export class WordComponent {
-@Input() word?:string;
-get letters(){
-  return this.word?.split('').map(letter => letter.toLowerCase());
-}
+  @Input() word?:string;
+  get letters(){
+    return this.word?.split('').map(letter => letter.toLowerCase());
+  }
 }

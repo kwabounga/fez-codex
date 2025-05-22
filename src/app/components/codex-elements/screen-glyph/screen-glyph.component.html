@@ -1,10 +1,13 @@
 <ng-container *ngIf="tiles">
-  <div class="grid-container {{ isHalfed?'half-grid-container':'' }} tablet rel">
+  <div class="grid-container {{ isHalfed?'half-grid-container':'' }} tablet rel"
+    data-bs-toggle="tooltip"
+    title="{{title}}">
   <app-tile
         *ngFor="let tile of tiles, let id = index;"
         [asset]="tile"
         [letter]="mapping?mapping[tile]:undefined"
         (click)="selectGlyph(id)"
+        [disabled]="isJustStone"
       ></app-tile>
   </div>
   </ng-container>

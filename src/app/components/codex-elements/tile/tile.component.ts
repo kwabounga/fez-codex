@@ -49,6 +49,7 @@ export class TileComponent {
   @Input() asset?: string;
   @Input() letter: string='?';
   @Input() titleForced?: string;
+  @Input() disabled: boolean = false;
   tooltipElement!:any;
 
   constructor(
@@ -56,6 +57,9 @@ export class TileComponent {
     ) { }
 
   ngAfterViewInit(){
+    if(this.disabled) {
+      return
+    }
     setTimeout(()=>{
       let tooltipTrigger = this.elem.nativeElement.querySelector('[data-bs-toggle="tooltip"]')
       let t:string = tooltipTrigger.dataset.bsOriginalTitle;
@@ -67,7 +71,9 @@ export class TileComponent {
 
   }
   hoverTile(asset: any){
-
+    if(this.disabled) {
+      return
+    }
     let selector = `.grid-container-codex .tile-map app-tile[ng-reflect-asset="${asset}"]`;
     //console.log(selector);
     let el:any = document.querySelector(selector);
@@ -78,6 +84,9 @@ export class TileComponent {
     //console.log(el);
     }
   leaveTile(asset: any){
+    if(this.disabled) {
+      return
+    }
     let selector = `.grid-container-codex .tile-map app-tile[ng-reflect-asset="${asset}"]`;
     //console.log(selector);
     let el:any = document.querySelector(selector);

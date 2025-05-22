@@ -3,7 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-controller-button-mapping',
   templateUrl: './controller-button-mapping.component.html',
-  styleUrls: ['./controller-button-mapping.component.less']
+  styleUrls: ['./controller-button-mapping.component.less'],
+  host: {class: "d-contents"},
 })
 export class ControllerButtonMappingComponent {
   consolesMapping:string[] = [

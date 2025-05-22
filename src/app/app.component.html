@@ -23,7 +23,7 @@
         <div class="decor_step with-grass with-moss">
           <div class="decor_sign m-l-3"></div>
         </div>
-        <div class="decor_low_wall with-grass with-moss ">
+        <div class="decor_low_wall w-80 self-centered with-grass with-moss ">
           <div class="decor_gomez m-l-3"></div>
           <div class="decor_warrior m-l-3"></div>
           <div class="decor_seagull flipped"></div>
@@ -39,13 +39,15 @@
               >cliquer ici pour choisir sa console
               </app-message-note>
               <app-console-swapper
-                [choices]="['ps4','xbox','switch']"
+                [consoleID]="consoleID"
+                [choices]="allConsoles"
                 (swapperChanged)="setDevice($event)"
               ></app-console-swapper>
               <app-screen-glyph
-              [tiles]="[ '01', '11', '15', '17', '17', '00', '01', '08', '24', '05', '15', '00', '00', '11', '24', '20', '08', '02', '17', '00', '29', '00', '00', '00', '00', '00', '27', '00', '03', '24', '04', '15', '13', '00', '28', '00', '00', '00', '00', '24', '20', '12', '15', '20', '00', '26', '00', '07', '23', '20', '12', '00', '22', '17', '23', '22', '14', '00', '23', '05', '00', '00', '00', '00', '00', '01', '11', '15', '17', '17', '00', '22', '24', '12', '15', '16', '00', '00' ]"
+              [tiles]="[ '01', '11', '13', '17', '17', '00', '01', '08', '24', '05', '13', '00', '00', '11', '24', '20', '08', '02', '17', '00', '29', '00', '00', '00', '00', '00', '27', '00', '03', '24', '04', '13', '15', '00', '28', '00', '00', '00', '00', '24', '20', '12', '13', '20', '00', '26', '00', '07', '23', '20', '12', '00', '22', '17', '23', '22', '16', '00', '23', '05', '00', '00', '00', '00', '00', '01', '11', '13', '17', '17', '00', '22', '24', '12', '13', '14', '00', '00' ]"
               [mapping]="mapping"
               [isHalfed]="true"
+              [isJustStone]="true"
               [ngClass]="'tablet'"
       ></app-screen-glyph>
           </div>
@@ -125,7 +127,7 @@
         <!-- !elements -->
         </div>
         <div class="col-12 col-md-6">
-          <div class="decor_stone_wall x_h3 not_decor m-r-auto w-50 with-shadow with-house">
+          <div class="decor_stone_wall x_h3 not_decor m-r-auto w-64 with-shadow with-house">
             <div class="container {{(currentTile!=='00')?'kbd-select':''}} {{(currentGlyph!==-1)?'antic-kbd-select':''}} logic-elements {{uiHidden?'d-none':''}}">
               <app-antic-keyboard
               [title]="'gLyph kbd'"
@@ -159,7 +161,7 @@
         <div class="decor_stone_wall not_decor m-l-auto w-90 flex d-flex justify-content-start flex-row"  >
           <!-- <app-carousel-vertical  [allGlyphs]="['00','01','02','03']"></app-carousel-vertical>
           <app-carousel-vertical  [allGlyphs]="['X','Y','A','B','up','down','right','left','Lt','Rt']"></app-carousel-vertical> -->
-          <app-spell-mapping-selector></app-spell-mapping-selector>
+          <app-spell-mapping-selector [consoleID]="consoleID"></app-spell-mapping-selector>
           </div>
       </div>
     </div>

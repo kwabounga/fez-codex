@@ -10,8 +10,8 @@
 }
 
 .hypercube-container {
-  left: var(--mouse-x);
-  top: var(--mouse-y);
+  left: calc(var(--mouse-x) - .5rem);
+  top: calc(var(--mouse-y) - .5rem);
   position: absolute;
   mix-blend-mode: hard-light;
   z-index: 9999;
